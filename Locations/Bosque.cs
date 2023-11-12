@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    internal class Bosque
+    internal class Bosque : Locations
     {
+        public Bosque(int x, int y) : base(x, y)
+        {
+        }
+
+        public override void LocationEffect()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
