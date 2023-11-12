@@ -10,13 +10,16 @@ namespace integrador.Operadores
     {
         public M8()
         {
-            battery = 6500;
+            batteryMax = 6500;
+            batteryActual = 0;
             state = "idle";
             cargaMax = 250;
             cargaActual = CrearCargaActual();
-            speed = 10;
+            speedMax = 10;
+            speedActual = CrearVelocidadActual(); ;
             CreateId();
-            CreateOperador(battery, state, cargaMax, cargaActual, speed);
+            CreateOperador(batteryMax, batteryActual, state, cargaMax, cargaActual, speedMax, speedActual);
+            
         }
      
     }

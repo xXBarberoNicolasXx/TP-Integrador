@@ -10,13 +10,15 @@ namespace integrador.Operadores
     {
         public UAV()
         {
-            battery = 4000;
+            batteryMax = 4000;
+            batteryActual = 0;
             state = "idle";
             cargaMax = 5;
             cargaActual = CrearCargaActual();
-            speed = 50;
+            speedMax = 50;
+            speedActual = CrearVelocidadActual();
             CreateId();
-            CreateOperador(battery, state, cargaMax, cargaActual, speed);
+            CreateOperador(batteryMax, batteryActual, state, cargaMax, cargaActual, speedMax, speedActual);
         }
             
     }

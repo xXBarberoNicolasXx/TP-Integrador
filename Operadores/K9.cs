@@ -10,13 +10,15 @@ namespace integrador.Operadores
     {
         public K9()
         {
-            battery = 6500;
+            batteryMax = 6500;
+            batteryActual = 0;
             state = "idle";
             cargaMax = 40;
             cargaActual = CrearCargaActual();
-            speed = 25;
+            speedMax = 25;
+            speedActual = CrearVelocidadActual(); 
             CreateId();
-            CreateOperador(battery, state, cargaMax, cargaActual, speed);
+            CreateOperador(batteryMax, batteryActual, state, cargaMax, cargaActual, speedMax, speedActual);
         }
     
     }
