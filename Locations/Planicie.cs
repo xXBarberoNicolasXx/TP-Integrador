@@ -14,7 +14,7 @@ namespace integrador.Locations
 
         public override void LocationEffect()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

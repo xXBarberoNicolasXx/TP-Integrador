@@ -24,55 +24,55 @@ namespace integrador.Locations
 
             for (int i = 0; i < 1000; i++)
             {
-                int x, y;
+                int[] coordinates = new int[2];
 
                 do
                 {
-                    x = randy.Next(0, 100);
-                    y = randy.Next(0, 100);
-                } while (!usedCoordinates.Add((x, y)));
+                    coordinates[0] = randy.Next(0, 100);
+                    coordinates[1] = randy.Next(0, 100);
+                } while (!usedCoordinates.Add((coordinates[0], coordinates[1])));
 
-                    Cuartel cuartel = new Cuartel(x, y);
+                    Cuartel cuartel = new Cuartel(coordinates[0], coordinates[1]);
                     locations.Add(cuartel);
 
                     for (int j = 0; j < randy.Next(0, 10); j++)
                     {
-                        locations.Add(new Bosque(x, y));
+                        locations.Add(new Bosque(coordinates[0], coordinates[1]));
                     }
 
                     for (int j = 0; j < randy.Next(0, 10); j++)
                     {
-                        locations.Add(new Baldio(x, y));
+                        locations.Add(new Baldio(coordinates[0], coordinates[1]));
                     }
 
                     for (int j = 0; j < randy.Next(0, 10); j++)
                     {
-                        locations.Add(new Planicie(x, y));
+                        locations.Add(new Planicie(coordinates[0], coordinates[1]));
                     }
 
                     for (int j = 0; j < randy.Next(0, 10); j++)
                     {
-                        locations.Add(new Reciclaje(x, y));
+                        locations.Add(new Reciclaje(coordinates[0], coordinates[1]));
                     }
 
                     for (int j = 0; j < randy.Next(0, 10); j++)
                     {
-                        locations.Add(new Urbano(x, y));
+                        locations.Add(new Urbano(coordinates[0], coordinates[1]));
                     }
 
                     for (int j = 0; j < randy.Next(0, 10); j++)
                     {
-                        locations.Add(new Vertedero(x, y));
+                        locations.Add(new Vertedero(coordinates[0], coordinates[1]));
                     }
 
                     for (int j = 0; j < randy.Next(0, 10); j++)
                     {
-                        locations.Add(new VertederoElectronico(x, y));
+                        locations.Add(new VertederoElectronico(coordinates[0], coordinates[1]));
                     }
 
                     for (int j = 0; j < randy.Next(0, 10); j++)
                     {
-                        locations.Add(new Lago(x, y));
+                        locations.Add(new Lago(coordinates[0], coordinates[1]));
                     }
                 }
         }

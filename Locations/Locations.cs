@@ -1,4 +1,5 @@
-﻿using System;
+﻿using integrador.Operadores;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -11,8 +12,7 @@ namespace integrador.Locations
     {   protected Locations(int x, int y) { }
 
         public abstract void LocationEffect();
-    }
-
-    
+               
+    }    
 }
 

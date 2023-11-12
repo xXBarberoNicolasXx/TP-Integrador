@@ -23,13 +23,15 @@ namespace integrador.Operadores
         protected int cargaActual;
         protected double speedMax;
         protected double speedActual;
+        protected int[] location;
+
         public static Random randy = new Random();
 
         public Operador()
         {
         }
 
-        protected void CreateOperador(int batteryMax,int batteryActual, string state, int cargaMax, int cargaActual, double speedMax, double speedActual)
+        protected void CreateOperador(int batteryMax,int batteryActual, string state, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
         {
             this.batteryMax = batteryMax;
             this.batteryActual = batteryActual;
@@ -38,6 +40,7 @@ namespace integrador.Operadores
             this.cargaActual = cargaActual;
             this.speedMax = speedMax;
             this.speedActual = speedActual;
+            this.location = location;          
             //Ivan Imperiale
         }
 
@@ -73,6 +76,13 @@ namespace integrador.Operadores
             speedActual -= (speedActual * porcentajeVelocidad / 100.0);
             return speedActual;
             //Nicolas Barbero
+        }
+
+        protected int[] CrearLocacionDeOperador(int[] location)
+        {
+            location[0] = randy.Next(0, 100);
+            location[1] = randy.Next(0, 100);
+            return location;
         }
     }
 }
