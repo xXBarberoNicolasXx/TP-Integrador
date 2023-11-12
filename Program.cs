@@ -10,6 +10,8 @@ namespace integrador
             bool exit = false;
             string empresa = "Robótica Sky.Net";
             Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa);
+            
+            
             while (exit)
             {
                 MenuCuartel();

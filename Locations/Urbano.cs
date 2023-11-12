@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    internal class Urbano
+    internal class Urbano : Locations
     {
+        public Urbano(int x, int y) : base(x, y)
+        {
+        }
+
+        public override void LocationEffect()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

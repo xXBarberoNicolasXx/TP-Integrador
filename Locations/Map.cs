@@ -11,8 +11,6 @@ namespace integrador.Locations
     internal class Map
 
     {   
-        int x = 100;
-        int y = 100;
         public Map()
         {
             List<Locations> locations = new List<Locations>();
