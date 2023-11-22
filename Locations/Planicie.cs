@@ -8,7 +8,7 @@ namespace integrador.Locations
 {
     internal class Planicie : Locations
     {   
-        public Planicie(int x, int y) : base(x, y)
+        public Planicie()
         {
         }
 

@@ -8,7 +8,7 @@ namespace integrador.Locations
 {
     internal class Baldio : Locations
     {
-        public Baldio(int x, int y) : base(x, y)
+        public Baldio()
         {
         }
 

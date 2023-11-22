@@ -8,7 +8,7 @@ namespace integrador.Locations
 {
     internal class Bosque : Locations
     {
-        public Bosque(int x, int y) : base(x, y)
+        public Bosque()
         {
         }
 

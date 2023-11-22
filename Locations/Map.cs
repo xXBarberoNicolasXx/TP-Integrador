@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,72 +11,117 @@ namespace integrador.Locations
 {
     internal class Map
 
-    {   
+    {
+        private int mapX = 100;
+        private int mapY = 100;
+        private int cuartelMax = 2;
+        private Random randy = new Random();
+        public List<Locations> locations = new List<Locations>();
+        private Baldio ß = new Baldio();
+        private Bosque B = new Bosque();
+        private Cuartel C = new Cuartel();
+        private Planicie P = new Planicie();
+        private Lago L = new Lago();
+        private Reciclaje R = new Reciclaje();
+        private Urbano U = new Urbano();
+        private Vertedero V = new Vertedero();
+        private VertederoElectronico E = new VertederoElectronico();
+
+
         public Map()
         {
-            List<Locations> locations = new List<Locations>();
-            CreateMap(locations);
+            locations.Add(C);
+            locations.Add(ß);
+            locations.Add(B);
+            locations.Add(P);
+            locations.Add(L);
+            locations.Add(U);
+            locations.Add(V);
+            locations.Add(E);
+            locations.Add(R);
         }
-                  
-        private void CreateMap(List<Locations> locations)
-            {
-                Random randy = new Random();
-            HashSet<(int, int)> usedCoordinates = new HashSet<(int, int)>();
 
-            for (int i = 0; i < 1000; i++)
-            {
-                int[] coordinates = new int[2];
+        private Locations[][] CreateMap()
+        {
+            Locations[][] map = new Locations[100][];
 
-                do
+            for (int i = 0; i < mapX; i++)
+            {
+                map[i] = new Locations[100];
+                for (int j = 0; j < mapY; j++)
                 {
-                    coordinates[0] = randy.Next(0, 100);
-                    coordinates[1] = randy.Next(0, 100);
-                } while (!usedCoordinates.Add((coordinates[0], coordinates[1])));
-
-                    Cuartel cuartel = new Cuartel(coordinates[0], coordinates[1]);
-                    locations.Add(cuartel);
-
-                    for (int j = 0; j < randy.Next(0, 10); j++)
+                    if (map[i][j] == null)
                     {
-                        locations.Add(new Bosque(coordinates[0], coordinates[1]));
-                    }
-
-                    for (int j = 0; j < randy.Next(0, 10); j++)
-                    {
-                        locations.Add(new Baldio(coordinates[0], coordinates[1]));
-                    }
-
-                    for (int j = 0; j < randy.Next(0, 10); j++)
-                    {
-                        locations.Add(new Planicie(coordinates[0], coordinates[1]));
-                    }
-
-                    for (int j = 0; j < randy.Next(0, 10); j++)
-                    {
-                        locations.Add(new Reciclaje(coordinates[0], coordinates[1]));
-                    }
-
-                    for (int j = 0; j < randy.Next(0, 10); j++)
-                    {
-                        locations.Add(new Urbano(coordinates[0], coordinates[1]));
-                    }
-
-                    for (int j = 0; j < randy.Next(0, 10); j++)
-                    {
-                        locations.Add(new Vertedero(coordinates[0], coordinates[1]));
-                    }
-
-                    for (int j = 0; j < randy.Next(0, 10); j++)
-                    {
-                        locations.Add(new VertederoElectronico(coordinates[0], coordinates[1]));
-                    }
-
-                    for (int j = 0; j < randy.Next(0, 10); j++)
-                    {
-                        locations.Add(new Lago(coordinates[0], coordinates[1]));
+                        int assignArea = randy.Next(1, locations.Count);
+                        map[i][j] = locations[assignArea];
                     }
                 }
+            }
+            for (int k = 0; k < cuartelMax; k++)
+            {
+                int a = randy.Next(0, mapX);
+                int b = randy.Next(0, mapY);
+                map[a][b] = locations[0];
+            }
+            return map;
+        }
+
+
+
+        public void PrintMap()
+        {
+            Locations[][] map = CreateMap();
+            string output = "";
+            for (int i = 0; i < mapX; i++)
+            {
+                for (int j = 0; j < mapY; j++)
+                {
+                    if (map[i][j] is Cuartel)
+                    {
+                        output += "© ";
+                    }
+                    else if (map[i][j] is Baldio)
+                    {
+                        output += "Ø ";
+                    }
+                    else if (map[i][j] is Lago)
+                    {
+                        output += "≈ ";
+                    }
+                    else if (map[i][j] is Planicie)
+                    {
+                        output += "░ ";
+                    }
+                    else if (map[i][j] is Reciclaje)
+                    {
+                        output += "$ ";
+                    }
+                    else if (map[i][j] is Urbano)
+                    {
+                        output += "╬ ";
+                    }
+                    else if (map[i][j] is Vertedero)
+                    {
+                        output += "Ω ";
+                    }
+                    else if (map[i][j] is VertederoElectronico)
+                    {
+                        output += "£ ";
+                    }
+                    else if (map[i][j] is Bosque)
+                    {
+                        output += "♣ ";
+                    }
+                    else
+                    {
+                        output += "   ";
+                    }
+                }
+                output += "\n";
+            }
+            Console.WriteLine(output);
         }
     }
+//IvanImperiale
     
 }

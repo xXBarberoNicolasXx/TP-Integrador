@@ -8,7 +8,7 @@ namespace integrador.Locations
 {
     internal class VertederoElectronico : Locations
     {
-        public VertederoElectronico(int x, int y) : base(x, y)
+        public VertederoElectronico()
         {
         }
 

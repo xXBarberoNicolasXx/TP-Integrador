@@ -1,0 +1,14 @@
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\bin\Debug\net6.0\integrador.exe
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\bin\Debug\net6.0\integrador.deps.json
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\bin\Debug\net6.0\integrador.runtimeconfig.json
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\bin\Debug\net6.0\integrador.dll
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\bin\Debug\net6.0\integrador.pdb
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.GeneratedMSBuildEditorConfig.editorconfig
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.AssemblyInfoInputs.cache
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.AssemblyInfo.cs
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.csproj.CoreCompileInputs.cache
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.dll
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\refint\integrador.dll
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.pdb
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.genruntimeconfig.cache
+F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\ref\integrador.dll

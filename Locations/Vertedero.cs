@@ -9,7 +9,7 @@ namespace integrador.Locations
 {
     internal class Vertedero : Locations
     {
-        public Vertedero(int x, int y) : base(x, y)
+        public Vertedero()
         {
         }
 

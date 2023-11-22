@@ -8,7 +8,7 @@ namespace integrador.Locations
 {
     internal class Lago : Locations
     {   
-        public Lago(int x, int y) : base(x, y)
+        public Lago()
         {
         }
 

@@ -8,7 +8,7 @@ namespace integrador.Locations
 {
     internal class Urbano : Locations
     {
-        public Urbano(int x, int y) : base(x, y)
+        public Urbano()
         {
         }
 

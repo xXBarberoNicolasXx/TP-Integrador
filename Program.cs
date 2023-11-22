@@ -1,4 +1,5 @@
-﻿using integrador.Operadores;
+﻿using integrador.Locations;
+using integrador.Operadores;
 using System;
 
 namespace integrador
@@ -10,14 +11,18 @@ namespace integrador
             bool exit = false;
             string empresa = "Robótica Sky.Net";
             Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa);
-            
-            
-            while (exit)
-            {
-                MenuCuartel();
-            }
+            Map map = new Map();
+            map.PrintMap();
+
+            /*  while (exit)
+              {
+                  MenuCuartel();
+              }
+          }
+             */
         }
-           
+    }
+}
         
         
         
@@ -31,9 +36,7 @@ namespace integrador
         
         
         
-        
-        
-        void MenuCuartel()
+       /* void MenuCuartel()
             {
                 // Mostrar opciones que es posible asumir del cuartel y manejar la entrada del usuario
                 Console.WriteLine("Opciones de cuartel:");
@@ -195,7 +198,7 @@ namespace integrador
                 }
                 else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
             }
-        }
+        } */
     
 
 

@@ -8,7 +8,7 @@ namespace integrador.Locations
 {
     internal class Reciclaje : Locations
     {
-        public Reciclaje(int x, int y) : base(x, y)
+        public Reciclaje()
         {
         }
 
