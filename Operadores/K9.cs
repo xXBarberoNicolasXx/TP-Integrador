@@ -18,8 +18,8 @@ namespace integrador.Operadores
             speedMax = 25;
             speedActual = CrearVelocidadActual();
             location = CrearLocacionDeOperador(location);
-            CreateId();
-            CreateOperador(batteryMax, batteryActual, state, cargaMax, cargaActual, speedMax, speedActual, location);
+            id = CreateId();
+            CreateOperador(id, batteryMax, batteryActual, state, cargaMax, cargaActual, speedMax, speedActual, location);
         }
     
     }

@@ -16,6 +16,7 @@ namespace integrador.Operadores
 {
     public abstract class Operador
     {
+        protected string id;
         protected string state;
         protected int batteryMax;
         protected int batteryActual;
@@ -31,8 +32,9 @@ namespace integrador.Operadores
         {
         }
 
-        protected void CreateOperador(int batteryMax,int batteryActual, string state, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
+        protected void CreateOperador(string id,  int batteryMax,int batteryActual, string state, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
         {
+            this.id = id;
             this.batteryMax = batteryMax;
             this.batteryActual = batteryActual;
             this.state = state;

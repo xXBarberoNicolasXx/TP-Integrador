@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace integrador.Locations
 {
     abstract class Locations
-    {   protected Locations() { }
+    {   public Locations() { }
 
         public abstract void LocationEffect();
                

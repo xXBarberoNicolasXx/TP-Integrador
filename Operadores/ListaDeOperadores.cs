@@ -14,9 +14,8 @@ namespace integrador.Operadores
         {
             List<Operador> operadores = new List<Operador>();
             CrearOperadoresRandom(operadores);
-            
         }
-        private void CrearOperadoresRandom (List<Operador> operadores)
+        public void CrearOperadoresRandom (List<Operador> operadores)
         {
             for (int i = 0; i < 10; i++) 
             {

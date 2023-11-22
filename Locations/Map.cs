@@ -26,7 +26,7 @@ namespace integrador.Locations
         private Urbano U = new Urbano();
         private Vertedero V = new Vertedero();
         private VertederoElectronico E = new VertederoElectronico();
-
+        public Locations[][] mapLocations = new Locations[100][];
 
         public Map()
         {
@@ -41,74 +41,68 @@ namespace integrador.Locations
             locations.Add(R);
         }
 
-        private Locations[][] CreateMap()
+        public Locations[][] SetupMap(Locations[][] mapLocations)
         {
-            Locations[][] map = new Locations[100][];
-
             for (int i = 0; i < mapX; i++)
             {
-                map[i] = new Locations[100];
+                mapLocations[i] = new Locations[100];
                 for (int j = 0; j < mapY; j++)
                 {
-                    if (map[i][j] == null)
-                    {
-                        int assignArea = randy.Next(1, locations.Count);
-                        map[i][j] = locations[assignArea];
-                    }
+                      int assignArea = randy.Next(1, locations.Count);
+                      mapLocations[i][j] =  locations[assignArea];
                 }
             }
             for (int k = 0; k < cuartelMax; k++)
             {
                 int a = randy.Next(0, mapX);
                 int b = randy.Next(0, mapY);
-                map[a][b] = locations[0];
+                mapLocations[a][b] = locations[0];
             }
-            return map;
+            return mapLocations;
         }
 
 
 
-        public void PrintMap()
+        public string PrintMap(Locations[][] mapLocations)
         {
-            Locations[][] map = CreateMap();
             string output = "";
             for (int i = 0; i < mapX; i++)
             {
                 for (int j = 0; j < mapY; j++)
                 {
-                    if (map[i][j] is Cuartel)
+                    if (mapLocations[i][j] is Cuartel)
                     {
                         output += "© ";
                     }
-                    else if (map[i][j] is Baldio)
+                    else if (mapLocations[i][j] is Baldio)
                     {
                         output += "Ø ";
                     }
-                    else if (map[i][j] is Lago)
+                    else if (mapLocations[i][j] is Lago)
                     {
                         output += "≈ ";
                     }
-                    else if (map[i][j] is Planicie)
+                    else if (mapLocations[i][j] is Planicie)
                     {
                         output += "░ ";
                     }
-                    else if (map[i][j] is Reciclaje)
+                    else if (mapLocations[i][j] is Reciclaje)
                     {
                         output += "$ ";
                     }
-                    else if (map[i][j] is Urbano)
+                    else if (mapLocations[i][j] is Urbano)
                     {
                         output += "╬ ";
                     }
-                    else if (map[i][j] is Vertedero)
+                    else if (mapLocations[i][j] is Vertedero)
                     {
                         output += "Ω ";
                     }
-                    else if (map[i][j] is VertederoElectronico)
+                    else if (mapLocations[i][j] is VertederoElectronico)
                     {
                         output += "£ ";
                     }
-                    else if (map[i][j] is Bosque)
+                    else if (mapLocations[i][j] is Bosque)
                     {
                         output += "♣ ";
                     }
@@ -119,7 +113,7 @@ namespace integrador.Locations
                 }
                 output += "\n";
             }
-            Console.WriteLine(output);
+            return output;
         }
     }
 //IvanImperiale

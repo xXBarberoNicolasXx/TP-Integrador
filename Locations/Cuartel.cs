@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace integrador.Locations
 {
     internal class Cuartel : Locations
+
     {
         public Cuartel()
         {

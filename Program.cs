@@ -9,10 +9,15 @@ namespace integrador
         private static void Main(string[] args)
         {
             bool exit = false;
-            string empresa = "Robótica Sky.Net";
-            Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa);
             Map map = new Map();
-            map.PrintMap();
+            string empresa = "Robótica Sky.Net";
+            Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa +"\n");
+            string showMap = CreateMap(map);            
+            DisplayMap(showMap);
+            ListaDeOperadores operadores = new ListaDeOperadores();
+            List<Operador> operadoresList = new List<Operador>();
+            operadores.CrearOperadoresRandom(operadoresList);
+            Console.WriteLine(operadoresList.Count);
 
             /*  while (exit)
               {
@@ -21,7 +26,31 @@ namespace integrador
           }
              */
         }
+        static void BuildMap(Map map)
+        {
+            map.SetupMap(map.mapLocations);
+            //Ivan Imperiale
+        }
+        static string MapString (Map map)
+        {
+            string mapArea = map.PrintMap(map.mapLocations);
+            return mapArea;
+            //Ivan Imperiale
+        }
+        static void DisplayMap(string mapArea)
+        {
+            Console.WriteLine(mapArea);
+            //Ivan Imperiale
+        }
+        static string CreateMap(Map map)
+        {
+            BuildMap(map);
+            string mapArea = MapString(map);
+            return mapArea;
+            //Ivan Imperiale
+        }
     }
+    
 }
         
         
