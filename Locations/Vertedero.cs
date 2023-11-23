@@ -12,10 +12,21 @@ namespace integrador.Locations
         public Vertedero()
         {
         }
-
+        public int falla;
+        falla = 0; 
         public override void LocationEffect()
         {
-            throw new NotImplementedException();
+            Random random = new Random();
+            int probabilidad = random.Next(0, 100);
+            if (probabilidad < 5)
+            {
+                
+                return falla; 
+            }
+            else
+            {
+                
+            }
         }
     }
 }

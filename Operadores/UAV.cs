@@ -13,6 +13,7 @@ namespace integrador.Operadores
             batteryMax = 4000;
             batteryActual = 0;
             state = "idle";
+            opState = "Ok";
             cargaMax = 5;
             cargaActual = CrearCargaActual();
             speedMax = 50;

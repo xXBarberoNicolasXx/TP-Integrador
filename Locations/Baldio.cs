@@ -11,10 +11,5 @@ namespace integrador.Locations
         public Baldio()
         {
         }
-
-        public override void LocationEffect()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

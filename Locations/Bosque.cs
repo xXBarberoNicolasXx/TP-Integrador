@@ -11,10 +11,5 @@ namespace integrador.Locations
         public Bosque()
         {
         }
-
-        public override void LocationEffect()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

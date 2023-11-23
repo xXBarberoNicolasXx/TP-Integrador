@@ -17,7 +17,8 @@ namespace integrador.Operadores
     public abstract class Operador
     {
         protected string id;
-        protected string state;
+        protected string generalState;
+        protected string operatorState;
         protected int batteryMax;
         protected int batteryActual;
         protected int cargaMax;
@@ -32,12 +33,13 @@ namespace integrador.Operadores
         {
         }
 
-        protected void CreateOperador(string id,  int batteryMax,int batteryActual, string state, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
+        protected void CreateOperador(string id,  int batteryMax,int batteryActual, string state, string opState, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
         {
             this.id = id;
             this.batteryMax = batteryMax;
             this.batteryActual = batteryActual;
-            this.state = state;
+            this.generalState = state;
+            this.operatorState = efectoTerreno;
             this.cargaMax = cargaMax;
             this.cargaActual = cargaActual;
             this.speedMax = speedMax;
@@ -86,5 +88,12 @@ namespace integrador.Operadores
             location[1] = randy.Next(0, 100);
             return location;
         }
+
+        protected string CreateOpState(int falla, string opState)
+        {
+            string efectoTerreno = Locations.CreateEfectoTerreno(falla, opState);
+            opState = efectoTerreno;
+            return opState;
+            //Nicolas Barbero
+        }
     }
-}

@@ -11,10 +11,5 @@ namespace integrador.Locations
         public Planicie()
         {
         }
-
-        public override void LocationEffect()
-        {
-            
-        }
     }
 }

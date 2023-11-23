@@ -11,10 +11,11 @@ namespace integrador.Locations
         public Urbano()
         {
         }
-
+        /* lo iba a borrar porque ni tienen efectos pero por las dudas lo dejo comentado
         public override void LocationEffect()
         {
             throw new NotImplementedException();
         }
+        */
     }
 }
