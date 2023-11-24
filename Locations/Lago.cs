@@ -11,10 +11,9 @@ namespace integrador.Locations
         public Lago()
         {
         }
-
-        public override void LocationEffect()
+        public static string CreateEfectoTerreno(string efectoTerreno)
         {
-            throw new NotImplementedException();
+            efectoTerreno = "Sector inundado, las unidades K9 y M8 no pueden pasar",
         }
+        //Nicolas Barbero
     }
-}

@@ -14,10 +14,15 @@ namespace integrador
             Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa +"\n");
             string showMap = CreateMap(map);            
             DisplayMap(showMap);
+            //Ivan Imperiale
             ListaDeOperadores operadores = new ListaDeOperadores();
             List<Operador> operadoresList = new List<Operador>();
+            string jsonData = JsonConvert.SerializeObject(operadoresList);
+            string filePath = @"Save\operadoresList.json";
+            File.WriteAllText(filePath, jsonData);
             operadores.CrearOperadoresRandom(operadoresList);
             Console.WriteLine(operadoresList.Count);
+            //Nicolas Barbero
 
             /*  while (exit)
               {
@@ -30,6 +35,10 @@ namespace integrador
         {
             map.SetupMap(map.mapLocations);
             //Ivan Imperiale
+            string jsonData = JsonConvert.SerializeObject(map);
+            string filePath = @"Save\map.json";
+            File.WriteAllText(filePath, jsonData);
+            //Nicolas Barbero
         }
         static string MapString (Map map)
         {
