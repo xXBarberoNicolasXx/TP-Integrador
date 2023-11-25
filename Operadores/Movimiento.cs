@@ -16,11 +16,9 @@ namespace integrador.Operadores
 {
     public abstract class Movimiento
     {
-         double CrearVelocidadActual(double speedMax, double speedActual, int Bateria.ReduccionBateria(int batteryMax, int batteryActual))
+        double CrearVelocidadActual(double speedMax, double speedActual, int batteryMax, int batteryActual)
         {
-            double speedActual = speedMax;
-            double porcentajeVelocidad;
-            porcentajeVelocidad = (reduccionBateria / 10.0) * 5.0;
+            double porcentajeVelocidad = (Bateria.ReduccionBateria(batteryMax, batteryActual) / 10.0) * 5.0;
             speedActual -= (speedActual * porcentajeVelocidad / 100.0);
             return speedActual;
             //Nicolas Barbero
