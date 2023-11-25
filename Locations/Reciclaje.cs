@@ -12,9 +12,16 @@ namespace integrador.Locations
         {
         }
 
-        public override void LocationEffect()
+        public override void LocationEffect(int batteryMax, int batteryActual, Operador operador)
         {
-            throw new NotImplementedException();
+            int RecargarBateria(int batteryMax, int batteryActual, Operador operador)
+            {
+                while (batteryActual < batteryMax)
+                {
+                    batteryActual++;
+                }
+                return batteryActual;
+            }
         }
     }
 }

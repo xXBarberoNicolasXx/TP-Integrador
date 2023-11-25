@@ -68,7 +68,7 @@ namespace integrador.Operadores
             //Ivan Imperiale
         }
 
-        protected double CrearVelocidadActual()
+        protected double CrearVelocidadActual(double speedMax)
         {
             double speedActual = speedMax;
             int porcentajeBateria;
