@@ -19,6 +19,12 @@ namespace integrador
             List<Operador> operadoresList = new List<Operador>();
             string jsonData = JsonConvert.SerializeObject(operadoresList);
             string filePath = @"Save\operadoresList.json";
+            string folderPath = @"C:\Users\Documents\UTN\TP-Integrador";
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
             File.WriteAllText(filePath, jsonData);
             operadores.CrearOperadoresRandom(operadoresList);
             Console.WriteLine(operadoresList.Count);
