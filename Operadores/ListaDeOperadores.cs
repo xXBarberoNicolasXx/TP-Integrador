@@ -15,6 +15,7 @@ namespace integrador.Operadores
         {
             List<Operador> operadores = new List<Operador>();
             CrearOperadoresRandom(operadores);
+            //Ivan Imperiale
             List<Operador> operadoresEnBaldio;
             List<Operador> operadoresEnBosque;
             List<Operador> operadoresEnCuartel;
@@ -24,6 +25,7 @@ namespace integrador.Operadores
             List<Operador> operadoresEnUrbano;
             List<Operador> operadoresEnVertedero;
             List<Operador> operadoresEnVertederoElectronico;
+            //Nicolas Barbero
         }
         public void CrearOperadoresRandom (List<Operador> operadores)
         {
@@ -38,6 +40,7 @@ namespace integrador.Operadores
                 for (int j = 0; j < randy.Next(0, 10); j++) ;
                 M8 m8 = new M8();
                 operadores.Add(m8);
+                //Ivan Imperiale
             }
         }
 
@@ -92,6 +95,7 @@ namespace integrador.Operadores
                 {
                     operadoresEnVertederoElectronico.Add(operador);
                 }
+                //Nicolas Barbero
             }
         }
     }

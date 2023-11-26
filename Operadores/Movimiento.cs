@@ -44,6 +44,7 @@ namespace integrador.Operadores
             }
 
             return batteryActual;
+            //Nicolas Barbero
         }
 
 
@@ -58,7 +59,7 @@ namespace integrador.Operadores
                 operadorRecibeCarga.cargaActual = operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual;
             }
             else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
-        }
+        }//Nicolas Barbero
     }
 }
 

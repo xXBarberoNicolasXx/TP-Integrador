@@ -23,6 +23,7 @@ namespace integrador.Operadores
                 batteryActual++;
             }
             return batteryActual;
+            //Nicolas Barbero
         }
 
         int ReduccionBateria(int batteryMax, int batteryActual) 
@@ -32,6 +33,7 @@ namespace integrador.Operadores
             porcentajeBateria = (batteryActual * 100) / batteryMax; // si batteryMax es el 100% de la bateria, batteryActual = porcentajeBateria 
             reduccionBateria = 100 - porcentajeBateria; // la diferencia entre 100 (batteryMax) y batteryActual es cuanto se redujo la carga 
             return reduccionBateria;
+            //Nicolas Barbero
         }
 
         public string int DañoBateria(int batteryMax, string opState)
@@ -42,6 +44,7 @@ namespace integrador.Operadores
                 batteryMax = (int)(batteryMax - reduccion);
             }
             return batteryMax;
+            //Nicolas Barbero
         }
         int TransferirBateria(Operadores operador, int batteryMax, int batteryActual)
         {
@@ -53,6 +56,7 @@ namespace integrador.Operadores
             {
                 operadorRecibeBateria.OperadorBatery++;
                 operadorDonaBateria.OperadorBatery--;
+                //Nicolas Barbero
             }
         }
 

@@ -21,7 +21,7 @@ namespace integrador.Operadores
             location = CrearLocacionDeOperador(location);
             id = CreateId();
             CreateOperador(id, batteryMax, batteryActual, state, cargaMax, cargaActual, speedMax, speedActual, location);
-        }
-            
+        }//Ivan Imperiale
+
     }
 }
