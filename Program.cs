@@ -219,29 +219,8 @@ namespace integrador
                 }
             }
 
-            void TransferirBateria(Operador operadorRecibeBateria, Operador operadorDonaBateria) {
-                Console.WriteLine("A cual operador desea cargar la bateria:");
-                Operador operadorRecibeBateria = new Operador(Console.ReadLine());
-                Console.WriteLine("A cual operador desea donar su bateria: ");
-                Operador operadorDonaBateria = new Operador(Console.ReadLine());
-                if (operadorRecibeBateria.OperadorBatery < 100 && operadorDonaBateria.OperadorBatery > 0)
-                {
-                    operadorRecibeBateria.OperadorBatery++;
-                    operadorDonaBateria.OperadorBatery--;
-                }
-            }
-            void TranspasoCarga(Operador operadorRecibeCarga, Operador operadorDonaCarga)
-            {
-                Console.WriteLine("A cual operador desea transpasar la carga: ");
-                Operador operadorRecibeCarga = new Operador(Console.ReadLine());
-                Console.WriteLine("A cual operador desea dar la carga: ");
-                Operador operadorDonaCarga = new Operador(Console.ReadLine());
-                if (operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual <= operadorRecibeCarga.cargaMax)
-                {
-                    operadorRecibeCarga.cargaActual = operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual;
-                }
-                else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
-            }
+            
+            
         } */
     
 

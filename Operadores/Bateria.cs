@@ -43,6 +43,18 @@ namespace integrador.Operadores
             }
             return batteryMax;
         }
+        int TransferirBateria(Operadores operador, int batteryMax, int batteryActual)
+        {
+            Console.WriteLine("A cual operador desea cargar la bateria:"); 
+            Operador operadorRecibeBateria = Console.ReadLine();
+            Console.WriteLine("A cual operador desea donar su bateria: ");
+            Operador operadorDonaBateria = Console.ReadLine(); 
+            while (operadorRecibeBateria.batteryActual < operadorRecibeBateria.batteryMax && operadorDonaBateria.batteryActual > 0)
+            {
+                operadorRecibeBateria.OperadorBatery++;
+                operadorDonaBateria.OperadorBatery--;
+            }
+        }
 
     }
 }

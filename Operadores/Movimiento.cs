@@ -26,15 +26,82 @@ namespace integrador.Operadores
 
         int MovimientoBateria(int batteryActual, double speedMax)
         {
-            Console.Writeline("¿Cuantos kilometros debe recorrer la unidad?");
+            Console.WriteLine("¿Cuántos kilómetros debe recorrer la unidad?");
             double distanciaARecorrer = double.Parse(Console.ReadLine());
             double distanciaRecorrida = 0;
-            while (distanciaRecorrida < distanciaARecorrer) 
+            double distanciaBateria = 0;
+
+            while (distanciaRecorrida < distanciaARecorrer)
             {
-                distanciaRecorrida = distanciaRecorrida+ 0,1;
-                if (distanciaRecorrida = speedMax) { batteryActual - 0.10}
+                distanciaRecorrida += 0.1;
+                distanciaBateria += 0.1;
+
+                if (distanciaBateria >= speedMax)
+                {
+                    batteryActual -= (int)(batteryActual * 0.1); // Resta el 10% de la batería
+                    distanciaBateria = 0; // Reiniciar distanciaBateria
+                }
             }
+
             return batteryActual;
+        }
+
+
+        double TranspasoCarga(Operador operador, int cargaMax, int cargaActual;)
+        {
+            Console.WriteLine("A cual operador desea transpasar la carga: ");
+            Operador operadorRecibeCarga = Console.ReadLine();
+            Console.WriteLine("A cual operador desea dar la carga: ");
+            Operador operadorDonaCarga = Console.ReadLine();
+            if (operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual <= operadorRecibeCarga.cargaMax)
+            {
+                operadorRecibeCarga.cargaActual = operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual;
+            }
+            else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
         }
     }
 }
+
+
+
+
+
+/* chat gpt tiro esto, nose si implementarlo
+ * double TranspasoCarga(Operador operador, int cargaMax, int cargaActual)
+{
+    Console.WriteLine("A cuál operador desea transferir la carga: ");
+    string nombreOperadorRecibe = Console.ReadLine();
+
+    // Encuentra el operador en la lista según su nombre (o algún identificador único)
+    Operador operadorRecibeCarga = ObtenerOperadorPorNombre(nombreOperadorRecibe);
+
+    if (operadorRecibeCarga != null)
+    {
+        Console.WriteLine("A cuál operador desea donar la carga: ");
+        string nombreOperadorDona = Console.ReadLine();
+
+        // Encuentra el segundo operador en la lista según su nombre
+        Operador operadorDonaCarga = ObtenerOperadorPorNombre(nombreOperadorDona);
+
+        if (operadorDonaCarga != null)
+        {
+            if (operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual <= operadorRecibeCarga.cargaMax)
+            {
+                operadorRecibeCarga.cargaActual += operadorDonaCarga.cargaActual;
+            }
+            else
+            {
+                Console.WriteLine("El peso supera la capacidad de carga del operador receptor.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("No se encontró el operador que dona la carga.");
+        }
+    }
+    else
+    {
+        Console.WriteLine("No se encontró el operador que recibe la carga.");
+    }
+}
+ */
