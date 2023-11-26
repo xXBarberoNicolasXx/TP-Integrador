@@ -12,3 +12,11 @@ F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\refint\integrador.dll
 F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.pdb
 F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\integrador.genruntimeconfig.cache
 F:\CURSO .NET\PROGRAMAS\TP-Integrador\obj\Debug\net6.0\ref\integrador.dll
+C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.csproj.AssemblyReference.cache
+C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.AssemblyInfoInputs.cache
+C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.AssemblyInfo.cs
+C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.csproj.CoreCompileInputs.cache
+C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.dll
+C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\refint\integrador.dll
+C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.pdb

@@ -23,5 +23,18 @@ namespace integrador.Operadores
             return speedActual;
             //Nicolas Barbero
         }
+
+        int MovimientoBateria(int batteryActual, double speedMax)
+        {
+            Console.Writeline("¿Cuantos kilometros debe recorrer la unidad?");
+            double distanciaARecorrer = double.Parse(Console.ReadLine());
+            double distanciaRecorrida = 0;
+            while (distanciaRecorrida < distanciaARecorrer) 
+            {
+                distanciaRecorrida = distanciaRecorrida+ 0,1;
+                if (distanciaRecorrida = speedMax) { batteryActual - 0.10}
+            }
+            return batteryActual;
+        }
     }
 }
