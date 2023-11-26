@@ -39,7 +39,7 @@ namespace integrador.Operadores
             this.batteryMax = batteryMax;
             this.batteryActual = batteryActual;
             this.generalState = state;
-            this.operatorState = efectoTerreno;
+            this.operatorState = opState;
             this.cargaMax = cargaMax;
             this.cargaActual = cargaActual;
             this.speedMax = speedMax;

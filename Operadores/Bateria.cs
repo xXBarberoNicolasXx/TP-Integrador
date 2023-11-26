@@ -16,7 +16,7 @@ namespace integrador.Operadores
 {
     public class Bateria : Operador
     {
-        int RecargarBateria(int batteryMax, int batteryActual, Operador operador)
+        int RecargarBateria(int batteryMax, int batteryActual)
         {
             while (batteryActual < batteryMax)
             {
@@ -32,6 +32,16 @@ namespace integrador.Operadores
             porcentajeBateria = (batteryActual * 100) / batteryMax; // si batteryMax es el 100% de la bateria, batteryActual = porcentajeBateria 
             reduccionBateria = 100 - porcentajeBateria; // la diferencia entre 100 (batteryMax) y batteryActual es cuanto se redujo la carga 
             return reduccionBateria;
+        }
+
+        public string int DañoBateria(int batteryMax, string opState)
+        {
+            if (opState == "Bateria dañada, su capacidad maxima se reduce en 20%") 
+            {
+                double reduccion = batteryMax * 0.20; // Calcula el 20% de la batería
+                batteryMax = (int)(batteryMax - reduccion);
+            }
+            return batteryMax;
         }
 
     }

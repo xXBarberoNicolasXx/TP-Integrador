@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Locations"
+    "\\Locations",
+    "\\Operadores"
   ],
-  "SelectedNode": "\\Locations\\Map.cs",
+  "SelectedNode": "\\Operadores\\Operador.cs",
   "PreviewInSolutionExplorer": false
 }
