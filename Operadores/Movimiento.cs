@@ -48,18 +48,7 @@ namespace integrador.Operadores
         }
 
 
-        double TranspasoCarga(Operador operador, int cargaMax, int cargaActual;)
-        {
-            Console.WriteLine("A cual operador desea transpasar la carga: ");
-            Operador operadorRecibeCarga = Console.ReadLine();
-            Console.WriteLine("A cual operador desea dar la carga: ");
-            Operador operadorDonaCarga = Console.ReadLine();
-            if (operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual <= operadorRecibeCarga.cargaMax)
-            {
-                operadorRecibeCarga.cargaActual = operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual;
-            }
-            else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
-        }//Nicolas Barbero
+        
     }
 }
 
