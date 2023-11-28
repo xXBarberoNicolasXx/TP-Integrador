@@ -2,6 +2,7 @@
 using integrador.Operadores;
 using System;
 
+
 namespace integrador
 {
     internal class Program
@@ -14,8 +15,17 @@ namespace integrador
             Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa +"\n");
             string showMap = CreateMap(map);            
             DisplayMap(showMap);
+            ListaDeOperadores operatorsListInstance = new ListaDeOperadores();
+            List<Operador> operatorsList = new List<Operador>();
+            LlenarListaDeOperadores(operatorsListInstance, operatorsList);
+            
+            foreach (Operador Oper in operatorsList) 
+            {
+                Console.WriteLine(Oper.ID);
+            }
+
             //Ivan Imperiale
-            ListaDeOperadores operadores = new ListaDeOperadores();
+            /*ListaDeOperadores operadores = new ListaDeOperadores();
             List<Operador> operadoresList = new List<Operador>();
             string jsonData = JsonConvert.SerializeObject(operadoresList);
             string filePath = @"Save\operadoresList.json";
@@ -28,7 +38,10 @@ namespace integrador
             File.WriteAllText(filePath, jsonData);
             operadores.CrearOperadoresRandom(operadoresList);
             Console.WriteLine(operadoresList.Count);
-            //Nicolas Barbero
+            //Nicolas Barbero*/
+
+            // No le gusta nada al compiu como lo guardaste ameo, dice que so re piola pero no entiende gallego
+
 
             /*  while (exit)
               {
@@ -39,18 +52,12 @@ namespace integrador
         }
         static void BuildMap(Map map)
         {
-            map.SetupMap(map.mapLocations);
+            map.SetupMap();
             //Ivan Imperiale
-            string jsonData = JsonConvert.SerializeObject(map);
-            string filePath = @"Save\map.json";
-            File.WriteAllText(filePath, jsonData);
+            /*string jsonData = JsonConvert.SerializeObject(map);
+            string filePath = @"Save\map.json"; // ta duro el save
+            File.WriteAllText(filePath, jsonData);*/
             //Nicolas Barbero
-        }
-        static string MapString (Map map)
-        {
-            string mapArea = map.PrintMap(map.mapLocations);
-            return mapArea;
-            //Ivan Imperiale
         }
         static void DisplayMap(string mapArea)
         {
@@ -60,9 +67,14 @@ namespace integrador
         static string CreateMap(Map map)
         {
             BuildMap(map);
-            string mapArea = MapString(map);
+            string mapArea = map.PrintMap();
             return mapArea;
             //Ivan Imperiale
+        }
+        static void LlenarListaDeOperadores(ListaDeOperadores operatorsListInstance, List<Operador> operatorsList)
+        {
+            
+            operatorsListInstance.CrearOperadoresRandom(operatorsList);
         }
     }
     

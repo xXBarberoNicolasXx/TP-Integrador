@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using integrador.Operadores;
 using System;
 
 using System;
@@ -14,8 +14,15 @@ using System;
 
 namespace integrador.Operadores
 {
-    public class Bateria : Operador
-    {
+    public class Bateria
+    { 
+        protected int batteryMax { get; set; }
+        protected int batteryActual { get; set; }
+        public Bateria(int batteryMax, int batteryActual) 
+        {
+            this.batteryMax = batteryMax;
+            this.batteryActual = batteryActual;
+        }
         int RecargarBateria(int batteryMax, int batteryActual)
         {
             while (batteryActual < batteryMax)
@@ -26,7 +33,7 @@ namespace integrador.Operadores
             //Nicolas Barbero
         }
 
-        int ReduccionBateria(int batteryMax, int batteryActual) 
+        public static int ReduccionBateria(int batteryMax, int batteryActual)  //lo hice static pa que
         {
             int porcentajeBateria;
             int reduccionBateria;
@@ -36,7 +43,7 @@ namespace integrador.Operadores
             //Nicolas Barbero
         }
 
-        public string int DañoBateria(int batteryMax, string opState)
+        public int DañoBateria(int batteryMax, string opState)
         {
             if (opState == "Bateria dañada, su capacidad maxima se reduce en 20%") 
             {
@@ -46,7 +53,7 @@ namespace integrador.Operadores
             return batteryMax;
             //Nicolas Barbero
         }
-        int TransferirBateria(Operadores operador, int batteryMax, int batteryActual)
+        /*int TransferirBateria(Operador operador, int batteryMax, int batteryActual)
         {
             Console.WriteLine("A cual operador desea cargar la bateria:"); 
             Operador operadorRecibeBateria = Console.ReadLine();
@@ -56,9 +63,9 @@ namespace integrador.Operadores
             {
                 operadorRecibeBateria.OperadorBatery++;
                 operadorDonaBateria.OperadorBatery--;
-                //Nicolas Barbero
+                //Nicolas Barbero Nombres de variables no pegan a nada
             }
-        }
+        }*/
 
     }
 }

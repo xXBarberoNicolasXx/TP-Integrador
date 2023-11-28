@@ -19,8 +19,8 @@ namespace integrador.Locations
             if (probabilidad < 5)
             {
                 falla = probabilidad;
-                return falla;
             }
+            return falla;
         }
         public static string CreateEfectoTerreno(int falla, string efectoTerreno)
         {

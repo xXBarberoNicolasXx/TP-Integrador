@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace integrador.Locations
 {
     internal class Map
-
     {
         private int mapX = 100;
         private int mapY = 100;
         private int cuartelMax = 2;
+        private int reciclajeMax = 4;
         private Random randy = new Random();
         public List<Locations> locations = new List<Locations>();
         private Baldio ß = new Baldio();
@@ -26,7 +26,7 @@ namespace integrador.Locations
         private Urbano U = new Urbano();
         private Vertedero V = new Vertedero();
         private VertederoElectronico E = new VertederoElectronico();
-        public Locations[][] mapLocations = new Locations[100][];
+        public Locations[] mapLocations = new Locations[100 * 100];
 
         public Map()
         {
@@ -38,71 +38,78 @@ namespace integrador.Locations
             locations.Add(U);
             locations.Add(V);
             locations.Add(E);
-            locations.Add(R);
         }
 
-        public Locations[][] SetupMap(Locations[][] mapLocations)
+        public Locations[] SetupMap()
         {
             for (int i = 0; i < mapX; i++)
             {
-                mapLocations[i] = new Locations[100];
                 for (int j = 0; j < mapY; j++)
                 {
-                      int assignArea = randy.Next(1, locations.Count);
-                      mapLocations[i][j] =  locations[assignArea];
+                    int assignArea = randy.Next(1, locations.Count);
+                    mapLocations[i * mapX + j] = locations[assignArea];
                 }
             }
+
             for (int k = 0; k < cuartelMax; k++)
             {
                 int a = randy.Next(0, mapX);
                 int b = randy.Next(0, mapY);
-                mapLocations[a][b] = locations[0];
+                mapLocations[a * mapX + b] = locations[0];
             }
+
+            for (int k = 0; k < reciclajeMax; k++)
+            {
+                int a = randy.Next(0, mapX);
+                int b = randy.Next(0, mapY);
+                mapLocations[a * mapX + b] = locations[0];
+            }
+
             return mapLocations;
         }
 
-
-
-        public string PrintMap(Locations[][] mapLocations)
+        public string PrintMap()
         {
             string output = "";
             for (int i = 0; i < mapX; i++)
             {
                 for (int j = 0; j < mapY; j++)
                 {
-                    if (mapLocations[i][j] is Cuartel)
+                    Locations location = mapLocations[i * mapX + j];
+
+                    if (location is Cuartel)
                     {
                         output += "© ";
                     }
-                    else if (mapLocations[i][j] is Baldio)
+                    else if (location is Baldio)
                     {
                         output += "Ø ";
                     }
-                    else if (mapLocations[i][j] is Lago)
+                    else if (location is Lago)
                     {
                         output += "≈ ";
                     }
-                    else if (mapLocations[i][j] is Planicie)
+                    else if (location is Planicie)
                     {
                         output += "░ ";
                     }
-                    else if (mapLocations[i][j] is Reciclaje)
+                    else if (location is Reciclaje)
                     {
                         output += "$ ";
                     }
-                    else if (mapLocations[i][j] is Urbano)
+                    else if (location is Urbano)
                     {
                         output += "╬ ";
                     }
-                    else if (mapLocations[i][j] is Vertedero)
+                    else if (location is Vertedero)
                     {
                         output += "Ω ";
                     }
-                    else if (mapLocations[i][j] is VertederoElectronico)
+                    else if (location is VertederoElectronico)
                     {
                         output += "£ ";
                     }
-                    else if (mapLocations[i][j] is Bosque)
+                    else if (location is Bosque)
                     {
                         output += "♣ ";
                     }
@@ -116,6 +123,6 @@ namespace integrador.Locations
             return output;
         }
     }
-//IvanImperiale
-    
+    //IvanImperiale
+
 }

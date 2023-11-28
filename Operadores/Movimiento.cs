@@ -13,15 +13,33 @@ using System;
 using System;
 
 namespace integrador.Operadores
-{
-    public abstract class Movimiento
+
+{    public class Movimiento
     {
-        double CrearVelocidadActual(double speedMax, double speedActual, int batteryMax, int batteryActual)
+    
+    protected double speedMax { get; set; }
+    protected double speedActual { get; set; }
+    protected int[] location { get; set; }
+    public Movimiento(double speedMax, double speedActual, int[] location) 
         {
-            double porcentajeVelocidad = (Bateria.ReduccionBateria(batteryMax, batteryActual) / 10.0) * 5.0;
+            this.speedMax = speedMax;
+            //this.speedActual = CrearVelocidadActual(speedActual, batteryMax, batteryActual);
+            this.location = CrearLocacionDeOperador(location);
+        }
+        private static Random randy = new Random();
+        public void CompareLocation() { }
+        double CrearVelocidadActual(double speedActual, int batteryMax, int batteryActual)
+        {
+            double porcentajeVelocidad = Bateria.ReduccionBateria(batteryMax, batteryActual) / 10.0 * 5.0;
             speedActual -= (speedActual * porcentajeVelocidad / 100.0);
             return speedActual;
             //Nicolas Barbero
+        }
+        protected int[] CrearLocacionDeOperador(int[] location)
+        {
+            location[0] = randy.Next(0, 100);
+            location[1] = randy.Next(0, 100);
+            return location;
         }
 
         int MovimientoBateria(int batteryActual, double speedMax)
@@ -46,9 +64,10 @@ namespace integrador.Operadores
             return batteryActual;
             //Nicolas Barbero
         }
+    }
+}
 
-
-        double TranspasoCarga(Operador operador, int cargaMax, int cargaActual;)
+        /* double TranspasoCarga(Operador operador, int cargaMax, int cargaActual)
         {
             Console.WriteLine("A cual operador desea transpasar la carga: ");
             Operador operadorRecibeCarga = Console.ReadLine();
@@ -59,7 +78,8 @@ namespace integrador.Operadores
                 operadorRecibeCarga.cargaActual = operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual;
             }
             else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
-        }//Nicolas Barbero
+        }//Nicolas Barbero /*
+        // Crea operadores nuevos que no estan usando el constructor y los console readline no se guardan en ningun string, sino que estan guardandose en ese mismo operador
     }
 }
 

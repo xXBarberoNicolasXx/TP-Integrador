@@ -16,59 +16,46 @@ namespace integrador.Operadores
 {
     public abstract class Operador
     {
-        protected string id;
-        protected string generalState;
-        protected string operatorState;
-        protected int batteryMax;
-        protected int batteryActual;
-        protected int cargaMax;
-        protected int cargaActual;
-        protected double speedMax;
-        protected double speedActual;
-        protected int[] location;
+        public string ID { get; set; }
+        protected string GeneralState { get; set; }
+        protected string OperatorState { get; set; }
+        protected int CargaMax { get; set; }
+        protected int CargaActual { get; set; }
+        protected Bateria Battery { get; set; }
+        protected Movimiento Movement { get; set; }
 
-        public static Random randy = new Random();
+        protected static Random randy = new Random();
 
-        public Operador()
+        protected Operador()
         {
         }
 
-        protected void CreateOperador(string id,  int batteryMax,int batteryActual, string state, string opState, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
+        /*protected void CreateOperador(string id,  int batteryMax,int batteryActual, string generalState, string operatorState, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
         {
-            this.id = id;
+            this.id = CreateId(id);
             this.batteryMax = batteryMax;
             this.batteryActual = batteryActual;
-            this.generalState = state;
-            this.operatorState = opState;
+            this.generalState = generalState;
+            this.operatorState = operatorState;
             this.cargaMax = cargaMax;
             this.cargaActual = cargaActual;
             this.speedMax = speedMax;
             this.speedActual = speedActual;
             this.location = location;          
             //Ivan Imperiale
-        }
+        }*/
 
-        protected static string CreateId()
-        {
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            char[] id = new char[6];
-            for (int i = 0; i < id.Length; i++)
-            {
-                int charPosition = randy.Next(0, chars.Length - 1);
-                id[i] = chars[charPosition];
-            }
-            return new string(id);
-            //Ivan Imperiale
-        }
+        public abstract string CreateId(string id);
+        
 
         protected int CrearCargaActual()
         {
-            int cargaActual = randy.Next(0, cargaMax);
+            int cargaActual = randy.Next(0, CargaMax);
             return cargaActual;
             //Ivan Imperiale
         }
 
-        protected double CrearVelocidadActual(double speedMax)
+        /*protected double CrearVelocidadActual(double speedMax)
         {
             double speedActual = speedMax;
             int porcentajeBateria;
@@ -79,8 +66,8 @@ namespace integrador.Operadores
             porcentajeVelocidad = (A / 10.0) * 5.0;
             speedActual -= (speedActual * porcentajeVelocidad / 100.0);
             return speedActual;
-            //Nicolas Barbero
-        }
+            //Nicolas Barbero //esto ahora esta en movimiento
+        }*/
 
         protected int[] CrearLocacionDeOperador(int[] location)
         {
@@ -89,11 +76,13 @@ namespace integrador.Operadores
             return location;
         }
 
-        protected string CreateOpState(int falla, string opState)
+        /*protected string CreateOpState(int falla, string opState)
         {
-            string efectoTerreno = Locations.CreateEfectoTerreno(falla, opState);
+            string efectoTerreno = Locations.Locations.CreateEfectoTerreno(falla, opState);
             opState = efectoTerreno;
             return opState;
             //Nicolas Barbero
-        }
+        // No recibe ni pega ne ningun operador, y las variables estan con nombres distintos
+        }*/
     }
+}

@@ -11,11 +11,11 @@ namespace integrador.Locations
 {
     abstract class Locations
     {   public Locations() { }
-        protected void CreateLocationEffect (int falla, string efectoTerreno) 
+       /* protected void CreateLocationEffect (int falla, string efectoTerreno) 
         {
             this.falla = falla;
             this.efectoTerreno = efectoTerreno;
-        }
+        } */ // no encuentra ni media variable :'v
     }    
 }
 
@@ -30,4 +30,4 @@ namespace integrador.Locations
             EfectoLugar.Add("PUERTO BATERIA DESCONECTADO", 4);
             EfectoLugar.Add("PINTURA RAYADA", 5);
 
-        }
+        }*/
