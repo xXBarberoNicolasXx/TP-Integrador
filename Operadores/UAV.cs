@@ -10,7 +10,7 @@ namespace integrador.Operadores
     {
         public UAV( Bateria battery, string generalState, string operatorState, int cargaMax, int cargaActual, Movimiento movement)
         {
-            ID = CreateId(ID);
+            this.ID = CreateId(ID);
             this.Battery = battery;
             this.GeneralState = generalState;
             this.OperatorState = operatorState;

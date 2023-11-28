@@ -9,6 +9,7 @@ namespace integrador
     {
         private static void Main(string[] args)
         {
+            //Cosas que me faltan hacer: Pasar las cargas, con sus metodos a otra clase.
             bool exit = false;
             Map map = new Map();
             string empresa = "Robótica Sky.Net";

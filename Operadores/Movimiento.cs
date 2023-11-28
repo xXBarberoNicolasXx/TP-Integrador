@@ -67,6 +67,7 @@ namespace integrador.Operadores
     }
 }
 
+<<<<<<< HEAD
         /* double TranspasoCarga(Operador operador, int cargaMax, int cargaActual)
         {
             Console.WriteLine("A cual operador desea transpasar la carga: ");
@@ -80,6 +81,10 @@ namespace integrador.Operadores
             else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
         }//Nicolas Barbero /*
         // Crea operadores nuevos que no estan usando el constructor y los console readline no se guardan en ningun string, sino que estan guardandose en ese mismo operador
+=======
+
+        
+>>>>>>> db47349639d52d716ce2612964979e90aad7712f
     }
 }
 
