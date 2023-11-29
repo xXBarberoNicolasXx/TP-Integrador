@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    internal class Map
+    public class Map
 
     {
         private int mapX = 100;

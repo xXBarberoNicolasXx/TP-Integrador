@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    enum Locations
+    public enum Locations
     {
         Cuartel,
         VertederoElectronico,

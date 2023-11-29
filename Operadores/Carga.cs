@@ -21,12 +21,32 @@ namespace integrador.Operadores
 
         private Random randy = new Random();
 
-        public Carga(int CargaMax, int CargaActual) 
+        public Carga(int CargaMax) 
         {
             this.CargaMax = CargaMax;
-            this.CargaActual = CrearCargaActual();
+            CargaActual = CrearCargaActual();
         }
-       
+        public int DepositarCarga(int cargaActual)
+        {
+            Console.WriteLine("¿Desa depositar la carga actual?: SI/NO");
+            string respuesta = Console.ReadLine().ToLower();
+            if (respuesta == "si")
+            {
+                cargaActual = 0;
+                Console.WriteLine("Se a depositado la carga");
+                return cargaActual;
+            }
+            else if (respuesta == "no") { Console.WriteLine("No se depositara la carga"); return cargaActual; }
+            else { Console.WriteLine("Respues no valida"); return cargaActual; }
+            //Nicolas Barbero
+        }
+        protected int CrearCargaActual()
+        {
+            int cargaActual = randy.Next(0, CargaMax);
+            return cargaActual;
+            //Ivan Imperiale
+        }
+
         /*double LevantamientoCarga(Operador operador, string opState, int cargaMax, int cargaActual)
         {
             if (opState != "SERVO ATASCADO")
@@ -50,25 +70,7 @@ namespace integrador.Operadores
             else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
         }//Nicolas Barbero*/
 
-        public int DepositarCarga(int cargaActual) 
-        {
-            Console.WriteLine("¿Desa depositar la carga actual?: SI/NO");
-            string respuesta = Console.ReadLine().ToLower();
-            if (respuesta == "si")
-            {
-                cargaActual = 0;
-                Console.WriteLine("Se a depositado la carga");
-                return cargaActual;
-            }
-            else if (respuesta == "no") { Console.WriteLine("No se depositara la carga"); return cargaActual; }
-            else { Console.WriteLine("Respues no valida"); return cargaActual; }
-        }
-        protected int CrearCargaActual()
-        {
-            int cargaActual = randy.Next(0, CargaMax);
-            return cargaActual;
-            //Ivan Imperiale
-        }
+
 
 
 

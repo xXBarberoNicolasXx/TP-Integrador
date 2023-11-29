@@ -13,8 +13,8 @@ namespace integrador.Operadores
         Random randy = new Random();
         public ListaDeOperadores() 
         {
-            List<Operador> operadores = new List<Operador>();
-            CrearOperadoresRandom(operadores);
+           // List<Operador> operadores = new List<Operador>();
+            //CrearOperadoresRandom(operadores);
             //Ivan Imperiale
             List<Operador> operadoresEnBaldio = new List<Operador>();
             List<Operador> operadoresEnBosque = new List<Operador>();
@@ -35,9 +35,9 @@ namespace integrador.Operadores
             Bateria bateriaUAV = new (4000, 4000);
             Bateria bateriaK9 = new (6500, 6500);
             Bateria bateriaM8 = new (12250, 12250);
-            Carga cargaM8 = new (250, 1);
-            Carga cargaK9 = new (40, 1);
-            Carga cargaUAV = new (5, 1);
+            Carga cargaM8 = new (250);
+            Carga cargaK9 = new (40);
+            Carga cargaUAV = new (5);
             Movimiento movementUAV = new (10, location);
             Movimiento movementM8 = new (2, location);
             Movimiento movementK9 = new (8, location);

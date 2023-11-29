@@ -64,6 +64,7 @@ namespace integrador.Operadores
             location[1] = randy.Next(0, 100);
             return location;
         }
+      
 
 
         /*protected void CreateOperador(string id,  int batteryMax,int batteryActual, string generalState, string operatorState, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
