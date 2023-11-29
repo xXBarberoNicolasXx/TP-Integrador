@@ -21,7 +21,7 @@ namespace integrador.Locations
                 }
                 return batteryActual;
             }
-            int DepositoCarga(int cargaActual)
+            int DepositoCarga(int cargaActual, Operador operador)
             {
                 int depositoCuartel;
                 depositoCuartel = cargaActual;
@@ -31,7 +31,7 @@ namespace integrador.Locations
                 //lo comento xq si quiere retornar eso nos va a rompe to'
             }
 
-            string Reparacion(string opState)
+            string Reparacion(string opState, Operador operador)
             {
                 opState = "Ok";
                 return opState;

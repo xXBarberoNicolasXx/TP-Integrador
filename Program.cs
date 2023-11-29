@@ -12,6 +12,7 @@ namespace integrador
             //Cosas que me faltan hacer: Pasar las cargas, con sus metodos a otra clase.
             bool exit = false;
             Map map = new Map();
+            Cuartel cuartel= new Cuartel();
             string empresa = "Robótica Sky.Net";
             Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa +"\n");
             string showMap = CreateMap(map);            
