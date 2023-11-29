@@ -33,13 +33,13 @@ namespace integrador.Operadores
             //Nicolas Barbero
         }
 
-        public static int ReduccionBateria(int batteryMax, int batteryActual)  //lo hice static pa que
+        public static int GastoBateria(int batteryMax, int batteryActual)  //lo hice static pa que
         {
             int porcentajeBateria;
-            int reduccionBateria;
+            int gastoBateria;
             porcentajeBateria = (batteryActual * 100) / batteryMax; // si batteryMax es el 100% de la bateria, batteryActual = porcentajeBateria 
-            reduccionBateria = 100 - porcentajeBateria; // la diferencia entre 100 (batteryMax) y batteryActual es cuanto se redujo la carga 
-            return reduccionBateria;
+            gastoBateria = 100 - porcentajeBateria; // la diferencia entre 100 (batteryMax) y batteryActual es cuanto se redujo la carga 
+            return gastoBateria;
             //Nicolas Barbero
         }
 

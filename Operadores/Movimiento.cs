@@ -37,7 +37,7 @@ namespace integrador.Operadores
             return location;
         }*/
 
-        public static int[] DistanciaARecorrer(Locations.Locations[,] mapLocations, int[] location, int[] destination) 
+        public static int[] DistanciaARecorrer(int[] location, int[] destination) 
         {
             int distanceX = location[0] - destination[0];
             int distanceY = location[1] - destination[1];
@@ -47,7 +47,7 @@ namespace integrador.Operadores
 
 
 
-        public static int VelocidadPorBateria (Bateria batteryActual, Movimiento speedMax, int[] distance) 
+        public static int ReduccionBateria(Bateria batteryActual, Movimiento speedMax, int[] distance) 
         {
             Console.WriteLine("¿Cuántos kilómetros debe recorrer la unidad?");
             double distanciaARecorrerX = distance[0];
@@ -55,10 +55,23 @@ namespace integrador.Operadores
             double distanciaRecorrida = 0;
             double distanciaBateria = 0;
 
-            while (distanciaRecorrida < distanciaARecorrer)
+            while (distanciaRecorrida != distanciaARecorrerX)
             {
-                distanciaRecorrida += 0.1;
-                distanciaBateria += 0.1;
+                if (distanciaARecorrerX > 0) { distanciaRecorrida += 1; }
+                else { distanciaRecorrida -= 1; }
+                distanciaBateria += 1;
+
+                if (distanciaBateria >= speedMax)
+                {
+                    batteryActual -= (int)(batteryActual * 0.1); // Resta el 10% de la batería
+                    distanciaBateria = 0; // Reiniciar distanciaBateria
+                }
+            }
+            while (distanciaRecorrida != distanciaARecorrerY)
+            {
+                if (distanciaARecorrerY > 0) { distanciaRecorrida += 1; }
+                else { distanciaRecorrida -= 1; }
+                distanciaBateria += 1;
 
                 if (distanciaBateria >= speedMax)
                 {
@@ -70,6 +83,16 @@ namespace integrador.Operadores
             return batteryActual;
             //Nicolas Barbero
         }
+
+        public static int VelocidadPorBateria(Bateria gastoBateria, Movimiento speedActual)
+        {
+            for (int i = 0; i < (gastoBateria / 10); i++)
+            {
+                speedActual = speedActual * 0.05;
+            }
+            return speedActual;
+        }
+
         public static void TotalRecall(Map map, List<Operador> operadores)
         {
             int cuartelI = -1;
