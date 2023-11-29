@@ -37,10 +37,21 @@ namespace integrador.Operadores
             return location;
         }*/
 
-        public static int VelocidadPorBateria(int batteryActual, double speedMax) 
+        public static int[] DistanciaARecorrer(Locations.Locations[,] mapLocations, int[] location, int[] destination) 
+        {
+            int distanceX = location[0] - destination[0];
+            int distanceY = location[1] - destination[1];
+            int[] distance = new int[] {distanceX, distanceY};
+            return distance;
+        }
+
+
+
+        public static int VelocidadPorBateria (Bateria batteryActual, Movimiento speedMax, int[] distance) 
         {
             Console.WriteLine("¿Cuántos kilómetros debe recorrer la unidad?");
-            double distanciaARecorrer = double.Parse(Console.ReadLine());
+            double distanciaARecorrerX = distance[0];
+            double distanciaARecorrerY = distance[1];
             double distanciaRecorrida = 0;
             double distanciaBateria = 0;
 

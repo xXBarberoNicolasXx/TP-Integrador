@@ -20,3 +20,17 @@ C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrad
 C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.dll
 C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\refint\integrador.dll
 C:\Users\La BuitreCueva\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.pdb
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\bin\Debug\net6.0\integrador.exe
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\bin\Debug\net6.0\integrador.deps.json
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\bin\Debug\net6.0\integrador.runtimeconfig.json
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\bin\Debug\net6.0\integrador.dll
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\bin\Debug\net6.0\integrador.pdb
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.AssemblyInfoInputs.cache
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.AssemblyInfo.cs
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.csproj.CoreCompileInputs.cache
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.dll
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\refint\integrador.dll
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.pdb
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\integrador.genruntimeconfig.cache
+C:\Users\ivan.imperiale\Documents\GitHub\TP-Integrador\obj\Debug\net6.0\ref\integrador.dll

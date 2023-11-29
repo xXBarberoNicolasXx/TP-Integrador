@@ -27,8 +27,8 @@ namespace integrador.Locations
         public void SetupMap()
         {
             int last = GetLastEnumValue();
-            int x = randy.Next(0, mapX);
-            int y = randy.Next(0, mapY);
+            int x;
+            int y;
 
             for (int i = 0; i < mapX; i++)
             {

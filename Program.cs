@@ -22,7 +22,7 @@ namespace integrador
             
             foreach (Operador Oper in operatorsList) 
             {
-                Console.WriteLine(Oper.ID);
+                Console.WriteLine(Oper.Carga.);
             }
 
             Movimiento.TotalRecall(map, operatorsList);
