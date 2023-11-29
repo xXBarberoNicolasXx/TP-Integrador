@@ -28,6 +28,30 @@ namespace integrador
             Movimiento.TotalRecall(map, operatorsList);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             //Ivan Imperiale
             /*ListaDeOperadores operadores = new ListaDeOperadores();
             List<Operador> operadoresList = new List<Operador>();
