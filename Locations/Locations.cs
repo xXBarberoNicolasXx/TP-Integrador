@@ -9,14 +9,32 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    abstract class Locations
+    enum Locations
+    {
+        Cuartel,
+        VertederoElectronico,
+        Baldio,
+        Bosque,        
+        Lago,
+        Planicie,
+        Reciclaje,
+        Urbano,
+        Vertedero
+        
+    }
+    
+    
+    
+    
+    
+    /* abstract class Locations
     {   public Locations() { }
-       /* protected void CreateLocationEffect (int falla, string efectoTerreno) 
+       protected void CreateLocationEffect (int falla, string efectoTerreno) 
         {
             this.falla = falla;
             this.efectoTerreno = efectoTerreno;
-        } */ // no encuentra ni media variable :'v
-    }    
+        } // no encuentra ni media variable :'v
+    }  */  
 }
 
 /* al final no lo use

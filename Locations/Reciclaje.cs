@@ -7,7 +7,7 @@ using integrador.Operadores;
 
 namespace integrador.Locations
 {
-    internal class Reciclaje : Locations
+   /* internal class Reciclaje : Locations
     {
         public Reciclaje()
         {
@@ -24,5 +24,5 @@ namespace integrador.Locations
                 return batteryActual;
             }
         }
-    }
+    }*/
 }

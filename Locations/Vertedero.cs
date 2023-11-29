@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace integrador.Locations
-{
-    internal class Vertedero : Locations
+{ }
+  /*  internal class Vertedero : Locations
     {
         public Vertedero()
         {
@@ -48,6 +48,6 @@ namespace integrador.Locations
             }
             return efectoTerreno;
             //Nicolas Barbero
-        }
-    }
-}
+        }*/
+    
+

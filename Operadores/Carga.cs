@@ -14,9 +14,20 @@ using System;
 
 namespace integrador.Operadores
 {
-    public class Carga : Operador
+    public class Carga 
     {
-        double LevantamientoCarga(Operador operador, string opState, int cargaMax, int cargaActual)
+        protected int CargaMax { get; set; }
+        protected int CargaActual { get; set; }
+
+        private Random randy = new Random();
+
+        public Carga(int CargaMax, int CargaActual) 
+        {
+            this.CargaMax = CargaMax;
+            this.CargaActual = CrearCargaActual();
+        }
+       
+        /*double LevantamientoCarga(Operador operador, string opState, int cargaMax, int cargaActual)
         {
             if (opState != "SERVO ATASCADO")
             {
@@ -37,19 +48,26 @@ namespace integrador.Operadores
                 operadorRecibeCarga.cargaActual = operadorRecibeCarga.cargaActual + operadorDonaCarga.cargaActual;
             }
             else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
-        }//Nicolas Barbero
+        }//Nicolas Barbero*/
 
-        double DepositarCarga(int cargaActual) 
+        public int DepositarCarga(int cargaActual) 
         {
             Console.WriteLine("¿Desa depositar la carga actual?: SI/NO");
-            string respuesta = string.ToLower(Console.ReadLine());
+            string respuesta = Console.ReadLine().ToLower();
             if (respuesta == "si")
             {
                 cargaActual = 0;
                 Console.WriteLine("Se a depositado la carga");
+                return cargaActual;
             }
-            else if (respuesta == "no") { Console.WriteLine("No se depositara la carga"); }
-            else { Console.WriteLine("Respues no valida"); }
+            else if (respuesta == "no") { Console.WriteLine("No se depositara la carga"); return cargaActual; }
+            else { Console.WriteLine("Respues no valida"); return cargaActual; }
+        }
+        protected int CrearCargaActual()
+        {
+            int cargaActual = randy.Next(0, CargaMax);
+            return cargaActual;
+            //Ivan Imperiale
         }
 
 

@@ -7,7 +7,7 @@ using integrador.Operadores;
 
 namespace integrador.Locations
 {
-    internal class Cuartel : Locations
+    /*internal class Cuartel : Locations
 
     {
         public Cuartel()
@@ -40,5 +40,5 @@ namespace integrador.Locations
                 return opState;
             }
         }
-    }
+    }*/
 }

@@ -11,38 +11,33 @@ using System;
 using System;
 
 using System;
+using integrador.Locations;
 
 namespace integrador.Operadores
 
 {    public class Movimiento
     {
     
-    protected double speedMax { get; set; }
-    protected double speedActual { get; set; }
-    protected int[] location { get; set; }
-    public Movimiento(double speedMax, double speedActual, int[] location) 
+    public double speedMax { get; set; }
+    public double speedActual { get; set; }
+    public int[] location { get; set; }
+    public Movimiento(double speedMax, int[] location) 
         {
             this.speedMax = speedMax;
-            //this.speedActual = CrearVelocidadActual(speedActual, batteryMax, batteryActual);
-            this.location = CrearLocacionDeOperador(location);
+           
+            this.location = location;
         }
         private static Random randy = new Random();
-        public void CompareLocation() { }
-        double CrearVelocidadActual(double speedActual, int batteryMax, int batteryActual)
-        {
-            double porcentajeVelocidad = Bateria.ReduccionBateria(batteryMax, batteryActual) / 10.0 * 5.0;
-            speedActual -= (speedActual * porcentajeVelocidad / 100.0);
-            return speedActual;
-            //Nicolas Barbero
-        }
-        protected int[] CrearLocacionDeOperador(int[] location)
+
+        
+        /*public int[] CrearLocacionDeOperador(int[] location)
         {
             location[0] = randy.Next(0, 100);
             location[1] = randy.Next(0, 100);
             return location;
-        }
+        }*/
 
-        int MovimientoBateria(int batteryActual, double speedMax)
+        public static int VelocidadPorBateria(int batteryActual, double speedMax) 
         {
             Console.WriteLine("¿Cuántos kilómetros debe recorrer la unidad?");
             double distanciaARecorrer = double.Parse(Console.ReadLine());
@@ -64,10 +59,30 @@ namespace integrador.Operadores
             return batteryActual;
             //Nicolas Barbero
         }
+        public void MoveLeft(int[] location, int[] destination)
+        {
+            do location[1]--;
+            while (location[1] < destination[1]);
+        }
+        public void MoveRight(int[] location, int[] destination)
+        {
+            do location[1]++;
+            while (location[1] > destination[1]);
+        }
+        public void MoveUp(int[] location, int[] destination)
+        {
+            do location[0]++;
+            while (location[0] < destination[0]);
+        }
+        public void MoveDown(int[] location, int[] destination)
+        {
+            do location[0]--;
+            while (location[0] < destination[0]);
+        }
     }
 }
 
-<<<<<<< HEAD
+
         /* double TranspasoCarga(Operador operador, int cargaMax, int cargaActual)
         {
             Console.WriteLine("A cual operador desea transpasar la carga: ");
@@ -81,10 +96,7 @@ namespace integrador.Operadores
             else { Console.WriteLine("el peso supera la capacidad de carga del operador seleccionado"); }
         }//Nicolas Barbero /*
         // Crea operadores nuevos que no estan usando el constructor y los console readline no se guardan en ningun string, sino que estan guardandose en ese mismo operador
-=======
 
-        
->>>>>>> db47349639d52d716ce2612964979e90aad7712f
     }
 }
 

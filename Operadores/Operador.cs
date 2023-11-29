@@ -14,21 +14,57 @@ using System;
 
 namespace integrador.Operadores
 {
-    public abstract class Operador
+    public class Operador
     {
         public string ID { get; set; }
-        protected string GeneralState { get; set; }
-        protected string OperatorState { get; set; }
-        protected int CargaMax { get; set; }
-        protected int CargaActual { get; set; }
-        protected Bateria Battery { get; set; }
-        protected Movimiento Movement { get; set; }
+        public string GeneralState { get; set; }
+        public string OperatorState { get; set; }
+        public Carga Carga { get; set; }
+        public Bateria Battery { get; set; }
+        public Movimiento Movement { get; set; }
 
-        protected static Random randy = new Random();
+        public static Random randy = new Random();
 
-        protected Operador()
+        public Operador(Bateria battery, string generalState, string operatorState, Carga carga, Movimiento movement)
         {
+            this.ID = CreateID();
+            this.Battery = battery;
+            this.GeneralState = generalState;
+            this.OperatorState = operatorState;
+            this.Carga = carga;
+            this.Movement = movement;
+            //Ivan Imperiale
+            movement.speedActual = CrearVelocidadActual(movement.speedActual, battery.BatteryMax, battery.BatteryActual);
         }
+
+        private string CreateID()
+        {
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            char[] idChar = new char[6];
+            for (int i = 0; i < idChar.Length; i++)
+            {
+                int charPosition = randy.Next(0, chars.Length - 1);
+                idChar[i] = chars[charPosition];
+            }
+            return new string(idChar);
+            //Ivan Imperiale
+        }
+        private double CrearVelocidadActual(double speedActual, int batteryMax, int batteryActual)
+        {
+            double porcentajeVelocidad = Bateria.ReduccionBateria(batteryMax, batteryActual) / 10.0 * 5.0;
+            speedActual -= (speedActual * porcentajeVelocidad / 100.0);
+            return speedActual;
+            //Nicolas Barbero
+        }
+
+        public static int[] CrearLocacionDeOperador()
+        {
+            int[] location = new int[2];
+            location[0] = randy.Next(0, 100);
+            location[1] = randy.Next(0, 100);
+            return location;
+        }
+
 
         /*protected void CreateOperador(string id,  int batteryMax,int batteryActual, string generalState, string operatorState, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)
         {
@@ -41,19 +77,13 @@ namespace integrador.Operadores
             this.cargaActual = cargaActual;
             this.speedMax = speedMax;
             this.speedActual = speedActual;
-            this.location = location;          
+            this.location[][] = location[][] ;          
             //Ivan Imperiale
         }*/
 
-        public abstract string CreateId(string id);
-        
 
-        protected int CrearCargaActual()
-        {
-            int cargaActual = randy.Next(0, CargaMax);
-            return cargaActual;
-            //Ivan Imperiale
-        }
+
+
 
         /*protected double CrearVelocidadActual(double speedMax)
         {
@@ -69,12 +99,7 @@ namespace integrador.Operadores
             //Nicolas Barbero //esto ahora esta en movimiento
         }*/
 
-        protected int[] CrearLocacionDeOperador(int[] location)
-        {
-            location[0] = randy.Next(0, 100);
-            location[1] = randy.Next(0, 100);
-            return location;
-        }
+
 
         /*protected string CreateOpState(int falla, string opState)
         {

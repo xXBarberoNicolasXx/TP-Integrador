@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    internal class Planicie : Locations
+    /*internal class Planicie : Locations
     {   
         public Planicie()
         {
         }
-    }
+    }*/
 }

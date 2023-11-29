@@ -16,14 +16,14 @@ namespace integrador.Operadores
 {
     public class Bateria
     { 
-        protected int batteryMax { get; set; }
-        protected int batteryActual { get; set; }
-        public Bateria(int batteryMax, int batteryActual) 
+        public int BatteryMax { get; set; }
+        public int BatteryActual { get; set; }
+        public Bateria(int BatteryMax, int BatteryActual) 
         {
-            this.batteryMax = batteryMax;
-            this.batteryActual = batteryActual;
+            this.BatteryMax = BatteryMax;
+            this.BatteryActual = BatteryActual;
         }
-        int RecargarBateria(int batteryMax, int batteryActual)
+        public static int RecargarBateria(int batteryMax, int batteryActual)
         {
             while (batteryActual < batteryMax)
             {
@@ -43,7 +43,7 @@ namespace integrador.Operadores
             //Nicolas Barbero
         }
 
-        public int DañoBateria(int batteryMax, string opState)
+        public static int DañoBateria(int batteryMax, string opState)
         {
             if (opState == "Bateria dañada, su capacidad maxima se reduce en 20%") 
             {

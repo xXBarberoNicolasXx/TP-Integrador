@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    internal class Urbano : Locations
+   /* internal class Urbano : Locations
     {
         public Urbano()
         {
@@ -16,6 +16,6 @@ namespace integrador.Locations
         {
             throw new NotImplementedException();
         }
-        */
-    }
+        
+    }*/
 }

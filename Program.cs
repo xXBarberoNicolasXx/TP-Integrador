@@ -12,18 +12,23 @@ namespace integrador
             //Cosas que me faltan hacer: Pasar las cargas, con sus metodos a otra clase.
             bool exit = false;
             Map map = new Map();
+            ListaDeOperadores operadores = new ListaDeOperadores();
+            operadores.CrearOperadoresRandom(operadores);
             string empresa = "Robótica Sky.Net";
             Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa +"\n");
             string showMap = CreateMap(map);            
             DisplayMap(showMap);
             ListaDeOperadores operatorsListInstance = new ListaDeOperadores();
             List<Operador> operatorsList = new List<Operador>();
-            LlenarListaDeOperadores(operatorsListInstance, operatorsList);
+            //LlenarListaDeOperadores(operatorsListInstance, operatorsList);
             
             foreach (Operador Oper in operatorsList) 
             {
                 Console.WriteLine(Oper.ID);
             }
+
+            TotalRecall(map, );
+            
 
             //Ivan Imperiale
             /*ListaDeOperadores operadores = new ListaDeOperadores();
@@ -51,6 +56,7 @@ namespace integrador
           }
              */
         }
+
         static void BuildMap(Map map)
         {
             map.SetupMap();
@@ -72,10 +78,39 @@ namespace integrador
             return mapArea;
             //Ivan Imperiale
         }
-        static void LlenarListaDeOperadores(ListaDeOperadores operatorsListInstance, List<Operador> operatorsList)
+        /*static void LlenarListaDeOperadores(ListaDeOperadores operatorsListInstance, List<Operador> operatorsList)
         {
             
             operatorsListInstance.CrearOperadoresRandom(operatorsList);
+        }*/
+        void TotalRecall(Map map, List<Operador> operadores)
+        {
+            int cuartelI = -1;
+            int cuartelJ = -1;
+            for (int i = 0; i < map.mapLocations.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.mapLocations.GetLength(1); j++)
+                {
+                    if (map.mapLocations[i, j] == Locations.Locations.Cuartel)
+                    {
+                        cuartelI = i;
+                        cuartelJ = j;
+                        break;
+                    }
+                }
+                if (cuartelI != -1) break;
+            }
+            if (cuartelI != -1 && cuartelJ != -1)
+            {
+                int[] destination = new int[] { cuartelI, cuartelJ };
+
+                foreach (Operador o in operadores)
+                    if (o.Movement.location != null && o.Battery.BatteryActual != 0)
+                    {
+                        o.Movement.location = destination;
+                    } //Falta crear e implementar la logica de movimiento por lugar
+                      //Ivan Imperiale
+            }
         }
     }
     

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    internal class Bosque : Locations
+  /*  internal class Bosque : Locations
     {
         public Bosque()
         {
         }
-    }
+    }*/
 }

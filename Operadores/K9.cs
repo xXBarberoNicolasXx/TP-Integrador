@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace integrador.Operadores
 {
-    internal class K9 : Operador
+   /* internal class K9 : Operador
     {
-        public K9( Bateria battery, string generalState, string operatorState, int cargaMax, int cargaActual, Movimiento movement)
+        public K9 (Bateria battery, string generalState, string operatorState, Carga carga, Movimiento movement)
         {
             this.ID = CreateId(ID);
             this.Battery = battery;
             this.GeneralState = generalState;
             this.OperatorState = operatorState;
-            this.CargaMax = cargaMax;
-            this.CargaActual = CrearCargaActual();
+            this.Carga = carga;
             this.Movement = movement;
             //Ivan Imperiale
         }
-        public override string CreateId(string id)
+    
+        public override string CreateID(string id)
         {
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             char[] idChar = new char[6];
@@ -31,5 +31,5 @@ namespace integrador.Operadores
             return new string(idChar);
             //Ivan Imperiale
         }
-    }
+    }*/
 }

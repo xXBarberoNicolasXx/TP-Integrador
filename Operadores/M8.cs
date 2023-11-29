@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace integrador.Operadores
 {
-    internal class M8 : Operador
+   /* internal class M8 : Operador
     {
-        public M8(Bateria battery, string generalState, string operatorState, int cargaMax, int cargaActual, Movimiento movement)
+        public M8(Bateria battery, string generalState, string operatorState, Carga carga, Movimiento movement)
         {
             this.ID = CreateId(ID);
             this.Battery = battery;
             this.GeneralState = generalState;
             this.OperatorState = operatorState;
-            this.CargaMax = cargaMax;
-            this.CargaActual = CrearCargaActual();
+            this.Carga = carga;
             this.Movement = movement;
             //Ivan Imperiale
+            movement.speedActual = CrearVelocidadActual(movement.speedActual, battery.BatteryMax, battery.BatteryActual);
         }
-        public override string CreateId(string id)
+        public override string CreateID(string id)
         {
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             char[] idChar = new char[6];
@@ -31,5 +31,12 @@ namespace integrador.Operadores
             return new string(idChar);
             //Ivan Imperiale
         }
-    }
+        private double CrearVelocidadActual(double speedActual, int batteryMax, int batteryActual)
+        {
+            double porcentajeVelocidad = Bateria.ReduccionBateria(batteryMax, batteryActual) / 10.0 * 5.0;
+            speedActual -= (speedActual * porcentajeVelocidad / 100.0);
+            return speedActual;
+            //Nicolas Barbero
+        }
+    }*/
 }

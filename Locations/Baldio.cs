@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace integrador.Locations
 {
-    internal class Baldio : Locations
+  /*  internal class Baldio : Locations
     {
         public Baldio()
         {
         }
-    }
+    }*/
 }

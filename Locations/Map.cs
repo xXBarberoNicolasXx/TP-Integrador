@@ -10,7 +10,120 @@ using System.Threading.Tasks;
 namespace integrador.Locations
 {
     internal class Map
+
     {
+        private int mapX = 100;
+        private int mapY = 100;
+        private int cuartelMax = 2;
+        private int reciclajeMax = 4;
+        private Random randy = new Random();
+        public Locations[,] mapLocations;
+
+        public Map()
+        {
+            mapLocations = new Locations[mapX, mapY];
+        }
+
+        public void SetupMap()
+        {
+            int last = GetLastEnumValue();
+            int x = randy.Next(0, mapX);
+            int y = randy.Next(0, mapY);
+
+            for (int i = 0; i < mapX; i++)
+            {
+                for (int j = 0; j < mapY; j++)
+                {
+                    mapLocations[i, j] = (Locations)randy.Next(2, last);
+                }
+            }
+            for (int k = 0; k < cuartelMax; k++)
+            {
+                x = randy.Next(0, mapX);
+                y = randy.Next(0, mapY);
+                mapLocations[x, y] = Locations.Cuartel;
+            }
+            for (int k = 0; k < reciclajeMax; k++)
+            {
+                x = randy.Next(0, mapX);
+                y = randy.Next(0, mapY);
+                mapLocations[x, y] = Locations.Reciclaje;
+            }
+        }
+        static int GetLastEnumValue()
+        {
+            Array enumLast = Enum.GetValues(typeof(Locations));
+            return enumLast.Length - 1;
+        }
+        public string PrintMap()
+        {
+            string output = "";
+
+            for (int i = 0; i < mapX; i++)
+            {
+                for (int j = 0; j < mapY; j++)
+                {
+                    Locations location = mapLocations[i, j];
+
+                    if (location is Locations.Cuartel)
+                    {
+                        output += "© ";
+                    }
+                    else if (location is Locations.Baldio)
+                    {
+                        output += "Ø ";
+                    }
+                    else if (location is Locations.Lago)
+                    {
+                        output += "≈ ";
+                    }
+                    else if (location is Locations.Planicie)
+                    {
+                        output += "░ ";
+                    }
+                    else if (location is Locations.Reciclaje)
+                    {
+                        output += "$ ";
+                    }
+                    else if (location is Locations.Urbano)
+                    {
+                        output += "╬ ";
+                    }
+                    else if (location is Locations.Vertedero)
+                    {
+                        output += "Ω ";
+                    }
+                    else if (location is Locations.VertederoElectronico)
+                    {
+                        output += "£ ";
+                    }
+                    else if (location is Locations.Bosque)
+                    {
+                        output += "♣ ";
+                    }
+                    else
+                    {
+                        output += "   ";
+                    }
+                }
+                output += "\n";
+            }
+            return output;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* {
         private int mapX = 100;
         private int mapY = 100;
         private int cuartelMax = 2;
@@ -26,7 +139,7 @@ namespace integrador.Locations
         private Urbano U = new Urbano();
         private Vertedero V = new Vertedero();
         private VertederoElectronico E = new VertederoElectronico();
-        public Locations[] mapLocations = new Locations[100 * 100];
+        public Locations[,] mapLocations = new Locations[100, 100];
 
         public Map()
         {
@@ -40,6 +153,7 @@ namespace integrador.Locations
             locations.Add(E);
         }
 
+        
         public Locations[] SetupMap()
         {
             for (int i = 0; i < mapX; i++)
@@ -122,7 +236,9 @@ namespace integrador.Locations
             }
             return output;
         }
-    }
-    //IvanImperiale
+    }*/
 
+        //IvanImperiale
+
+    }
 }
