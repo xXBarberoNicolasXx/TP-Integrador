@@ -13,13 +13,13 @@ namespace integrador.Locations
         public Cuartel()
         {
         }
-            int RecargarBateria(Bateria batteryMax, Bateria batteryActual, Operador operador)
+        int RecargarBateria(Operador operador)
+        {
+            while (operador.Battery.BatteryActual < operador.Battery.BatteryMax)
             {
-                while (batteryActual < batteryMax)
-                {
-                    batteryActual++;
-                }
-                return batteryActual;
+                operador.Battery.BatteryActual++;
+            }
+            return operador.Battery.BatteryActual;
             }
             int DepositoCarga(int cargaActual, Operador operador)
             {

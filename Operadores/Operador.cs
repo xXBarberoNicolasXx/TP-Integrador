@@ -34,7 +34,6 @@ namespace integrador.Operadores
             this.Carga = carga;
             this.Movement = movement;
             //Ivan Imperiale
-            movement.speedActual = CrearVelocidadActual(movement.speedActual, battery.BatteryMax, battery.BatteryActual);
         }
 
         private string CreateID()
@@ -49,13 +48,6 @@ namespace integrador.Operadores
             return new string(idChar);
             //Ivan Imperiale
         }
-        private double CrearVelocidadActual(double speedActual, int batteryMax, int batteryActual)
-        {
-            double porcentajeVelocidad = Bateria.ReduccionBateria(batteryMax, batteryActual) / 10.0 * 5.0;
-            speedActual -= (speedActual * porcentajeVelocidad / 100.0);
-            return speedActual;
-            //Nicolas Barbero
-        }
 
         public static int[] CrearLocacionDeOperador()
         {
@@ -64,7 +56,9 @@ namespace integrador.Operadores
             location[1] = randy.Next(0, 100);
             return location;
         }
-      
+        
+     
+
 
 
         /*protected void CreateOperador(string id,  int batteryMax,int batteryActual, string generalState, string operatorState, int cargaMax, int cargaActual, double speedMax, double speedActual, int[] location)

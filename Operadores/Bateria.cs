@@ -23,7 +23,7 @@ namespace integrador.Operadores
             this.BatteryMax = BatteryMax;
             this.BatteryActual = BatteryActual;
         }
-        public static int RecargarBateria(int batteryMax, int batteryActual)
+        public int RecargarBateria(int batteryMax, int batteryActual)
         {
             while (batteryActual < batteryMax)
             {
@@ -33,7 +33,7 @@ namespace integrador.Operadores
             //Nicolas Barbero
         }
 
-        public static int GastoBateria(int batteryMax, int batteryActual)  //lo hice static pa que
+        public int GastoBateria(int batteryMax, int batteryActual)  //lo hice static pa que
         {
             int porcentajeBateria;
             int gastoBateria;
@@ -43,7 +43,7 @@ namespace integrador.Operadores
             //Nicolas Barbero
         }
 
-        public static int DañoBateria(int batteryMax, string opState)
+        public int DañoBateria(int batteryMax, string opState)
         {
             if (opState == "Bateria dañada, su capacidad maxima se reduce en 20%") 
             {

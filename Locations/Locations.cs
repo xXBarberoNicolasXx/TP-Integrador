@@ -23,8 +23,7 @@ namespace integrador.Locations
         
     }
     
-    
-    
+  
     
     
     /* abstract class Locations

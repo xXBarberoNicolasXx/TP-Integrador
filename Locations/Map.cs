@@ -55,6 +55,25 @@ namespace integrador.Locations
             Array enumLast = Enum.GetValues(typeof(Locations));
             return enumLast.Length - 1;
         }
+        public int[] GetCuartelCoordinates()
+        {
+            int[] coordinates = new int[2];
+            for (int i = 0; i < mapX; i++)
+            {
+                for (int j = 0; j < mapY; j++)
+                {
+                    if (mapLocations[i, j] == Locations.Cuartel)
+                    {
+                        coordinates[0] = i; coordinates[1] = j;
+                        return coordinates;
+                    }
+                }
+            }
+
+            // If Cuartel is not found, you might want to handle this case accordingly
+            return null;
+        }
+
         public string PrintMap()
         {
             string output = "";

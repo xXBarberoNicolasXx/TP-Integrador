@@ -23,12 +23,12 @@ namespace integrador
             
             foreach (Operador Oper in operatorsList) 
             {
-                Console.WriteLine(Oper.Carga.);
+                Console.WriteLine(Oper.Battery.BatteryMax);
             }
 
             Movimiento.TotalRecall(map, operatorsList);
 
-
+            
 
 
 
@@ -79,15 +79,7 @@ namespace integrador
           }
              */
         }
-        static void BuildMap(Map map)
-        {
-            map.SetupMap();
-            //Ivan Imperiale
-            /*string jsonData = JsonConvert.SerializeObject(map);
-            string filePath = @"Save\map.json"; // ta duro el save
-            File.WriteAllText(filePath, jsonData);*/
-            //Nicolas Barbero
-        }
+       
         static void DisplayMap(string mapArea)
         {
             Console.WriteLine(mapArea);
@@ -95,7 +87,7 @@ namespace integrador
         }
         static string CreateMap(Map map)
         {
-            BuildMap(map);
+            map.SetupMap();
             string mapArea = map.PrintMap();
             return mapArea;
             //Ivan Imperiale
@@ -104,6 +96,21 @@ namespace integrador
         {
             
             operatorsListInstance.CrearOperadoresRandom(operatorsList);
+        }
+        static void ReciclajeEfectoTerreno(Operador operador)
+        {
+            
+            operador.Battery.RecargarBateria (operador.Battery.BatteryMax, operador.Battery.BatteryActual);
+        }
+        static string VertederoElectronicoEfectoTerreno(Operador operador)
+        {
+            Random random = new Random();
+            int probabilidad = random.Next(0, 100);
+            if (probabilidad < 20)
+            {
+                operador.OperatorState = "Bateria dañada, su capacidad maxima se reduce en 20%";
+            }
+            return operador.OperatorState;
         }
     }
     

@@ -24,12 +24,17 @@ namespace integrador.Operadores
     public Movimiento(double speedMax, int[] location) 
         {
             this.speedMax = speedMax;
-           
             this.location = location;
         }
         private static Random randy = new Random();
 
-        
+         public double CrearVelocidadActual(Operador operador)
+        {
+            double porcentajeVelocidad = operador.Battery.GastoBateria(operador.Battery.BatteryMax, operador.Battery.BatteryActual) / 10.0 * 5.0;
+            operador.Movement.speedActual -= (operador.Movement.speedActual * porcentajeVelocidad / 100.0);
+            return operador.Movement.speedActual;
+            //Nicolas Barbero
+        }
         /*public int[] CrearLocacionDeOperador(int[] location)
         {
             location[0] = randy.Next(0, 100);
@@ -47,13 +52,13 @@ namespace integrador.Operadores
 
 
 
-        public static int ReduccionBateria(Bateria batteryActual, Movimiento speedMax, int[] distance) 
+        public static int ReduccionBateria(Operador operador, int[] distance) 
         {
             Console.WriteLine("¿Cuántos kilómetros debe recorrer la unidad?");
-            double distanciaARecorrerX = distance[0];
-            double distanciaARecorrerY = distance[1];
-            double distanciaRecorrida = 0;
-            double distanciaBateria = 0;
+            int distanciaARecorrerX = distance[0];
+            int distanciaARecorrerY = distance[1];
+            int distanciaRecorrida = 0;
+            int distanciaBateria = 0;
 
             while (distanciaRecorrida != distanciaARecorrerX)
             {
@@ -61,9 +66,9 @@ namespace integrador.Operadores
                 else { distanciaRecorrida -= 1; }
                 distanciaBateria += 1;
 
-                if (distanciaBateria >= speedMax)
+                if (distanciaBateria >= operador.Movement.speedMax)
                 {
-                    batteryActual -= (int)(batteryActual * 0.1); // Resta el 10% de la batería
+                    operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.1); // Resta el 10% de la batería
                     distanciaBateria = 0; // Reiniciar distanciaBateria
                 }
             }
@@ -73,24 +78,24 @@ namespace integrador.Operadores
                 else { distanciaRecorrida -= 1; }
                 distanciaBateria += 1;
 
-                if (distanciaBateria >= speedMax)
+                if (distanciaBateria >= operador.Movement.speedMax)
                 {
-                    batteryActual -= (int)(batteryActual * 0.1); // Resta el 10% de la batería
+                    operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.1); // Resta el 10% de la batería
                     distanciaBateria = 0; // Reiniciar distanciaBateria
                 }
             }
 
-            return batteryActual;
+            return operador.Battery.BatteryActual;
             //Nicolas Barbero
         }
 
-        public static int VelocidadPorBateria(Bateria gastoBateria, Movimiento speedActual)
+        public static double VelocidadPorBateria(Operador operador)
         {
-            for (int i = 0; i < (gastoBateria / 10); i++)
+            for (int i = 0; i < (operador.Battery.GastoBateria(operador.Battery.BatteryMax, operador.Battery.BatteryActual / 10)); i++)
             {
-                speedActual = speedActual * 0.05;
+                operador.Movement.speedActual = operador.Movement.speedActual * 0.05;
             }
-            return speedActual;
+            return operador.Movement.speedActual;
         }
 
         public static void TotalRecall(Map map, List<Operador> operadores)

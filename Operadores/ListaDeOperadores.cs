@@ -16,7 +16,7 @@ namespace integrador.Operadores
            // List<Operador> operadores = new List<Operador>();
             //CrearOperadoresRandom(operadores);
             //Ivan Imperiale
-            List<Operador> operadoresEnBaldio = new List<Operador>();
+            /*List<Operador> operadoresEnBaldio = new List<Operador>();
             List<Operador> operadoresEnBosque = new List<Operador>();
             List<Operador> operadoresEnCuartel = new List<Operador>();
             List<Operador> operadoresEnLago = new List<Operador>();
@@ -24,7 +24,7 @@ namespace integrador.Operadores
             List<Operador> operadoresEnReciclaje = new List<Operador>();
             List<Operador> operadoresEnUrbano = new List<Operador>();
             List<Operador> operadoresEnVertedero = new List<Operador>();
-            List<Operador> operadoresEnVertederoElectronico = new List<Operador>();
+            List<Operador> operadoresEnVertederoElectronico = new List<Operador>();*/
             //Nicolas Barbero*/ 
             // esto no estaba haciendo nah'
         }
@@ -60,8 +60,20 @@ namespace integrador.Operadores
             }
             //Ivan Imperiale
         }
+        public static void LlenarListaCuartel(List<Operador> listaDeOperadores, Map mapLocations)
+        {
+            int[] coordenadas = mapLocations.GetCuartelCoordinates();
+            foreach (Operador oper in listaDeOperadores)
+            {
+                if (oper.Movement.location[0] == coordenadas[0] && oper.Movement.location[1] == coordenadas[1])
+                {
+                    listaDeOperadores.Add(oper);
+                }
+            }
+        }
+        
 
-    
+
 
         /*public void CrearOperadoresRandom (List<Operador> operadores)
         {
