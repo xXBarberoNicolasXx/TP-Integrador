@@ -16,9 +16,11 @@ namespace integrador
             Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa + "\n");
             string showMap = CreateMap(map);
             DisplayMap(showMap);
+            string mapJson = JsonSerealize(showMap);
             ListaDeOperadores operatorsListInstance = new ListaDeOperadores();
             List<Operador> operatorsList = new List<Operador>();
             LlenarListaDeOperadores(operatorsListInstance, operatorsList);
+            string operadoresJson = JsonSerealize(operatorsListInstance, operatorsList);
 
             foreach (Operador Oper in operatorsList)
             {
