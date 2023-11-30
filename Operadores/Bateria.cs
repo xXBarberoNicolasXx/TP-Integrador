@@ -15,10 +15,10 @@ using System;
 namespace integrador.Operadores
 {
     public class Bateria
-    { 
+    {
         public int BatteryMax { get; set; }
         public int BatteryActual { get; set; }
-        public Bateria(int BatteryMax, int BatteryActual) 
+        public Bateria(int BatteryMax, int BatteryActual)
         {
             this.BatteryMax = BatteryMax;
             this.BatteryActual = BatteryActual;
@@ -45,7 +45,7 @@ namespace integrador.Operadores
 
         public int DañoBateria(int batteryMax, string opState)
         {
-            if (opState == "Bateria dañada, su capacidad maxima se reduce en 20%") 
+            if (opState == "Bateria dañada, su capacidad maxima se reduce en 20%")
             {
                 double reduccion = batteryMax * 0.20; // Calcula el 20% de la batería
                 batteryMax = (int)(batteryMax - reduccion);
@@ -82,6 +82,42 @@ namespace integrador.Operadores
                 if (distanciaBateria >= operador.Movement.speedMax)
                 {
                     operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.1); // Resta el 10% de la batería
+                    distanciaBateria = 0; // Reiniciar distanciaBateria
+                }
+            }
+
+            return operador.Battery.BatteryActual;
+            //Nicolas Barbero
+        }
+
+        public static int ReduccionBateria500(Operador operador, int[] distance)
+        {
+            int distanciaARecorrerX = distance[0];
+            int distanciaARecorrerY = distance[1];
+            int distanciaRecorrida = 0;
+            int distanciaBateria = 0;
+
+            while (distanciaRecorrida != distanciaARecorrerX)
+            {
+                if (distanciaARecorrerX > 0) { distanciaRecorrida += 1; }
+                else { distanciaRecorrida -= 1; }
+                distanciaBateria += 1;
+
+                if (distanciaBateria >= operador.Movement.speedMax)
+                {
+                    operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.5); // Resta el 50% de la batería
+                    distanciaBateria = 0; // Reiniciar distanciaBateria
+                }
+            }
+            while (distanciaRecorrida != distanciaARecorrerY)
+            {
+                if (distanciaARecorrerY > 0) { distanciaRecorrida += 1; }
+                else { distanciaRecorrida -= 1; }
+                distanciaBateria += 1;
+
+                if (distanciaBateria >= operador.Movement.speedMax)
+                {
+                    operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.5); // Resta el 50% de la batería
                     distanciaBateria = 0; // Reiniciar distanciaBateria
                 }
             }

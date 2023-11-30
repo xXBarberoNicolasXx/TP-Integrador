@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33213.308
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "integrador", "integrador\integrador.csproj", "{16578702-51F2-4BDD-9E01-674537DDD573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "integrador", "integrador.csproj", "{2C246B7A-A8E1-42C7-8C81-A127178735C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{16578702-51F2-4BDD-9E01-674537DDD573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16578702-51F2-4BDD-9E01-674537DDD573}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16578702-51F2-4BDD-9E01-674537DDD573}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16578702-51F2-4BDD-9E01-674537DDD573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C246B7A-A8E1-42C7-8C81-A127178735C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C246B7A-A8E1-42C7-8C81-A127178735C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C246B7A-A8E1-42C7-8C81-A127178735C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C246B7A-A8E1-42C7-8C81-A127178735C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F80CBCF4-EE3E-4CA9-B0A5-5BCCCAABB29E}
+		SolutionGuid = {8EBFFE28-8136-4AE0-B579-7693585C1118}
 	EndGlobalSection
 EndGlobal

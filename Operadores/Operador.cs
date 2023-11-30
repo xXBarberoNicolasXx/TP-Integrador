@@ -22,19 +22,19 @@ namespace integrador.Operadores
         public Carga Carga { get; set; }
         public Bateria Battery { get; set; }
         public Movimiento Movement { get; set; }
-        public OperatorClass operatorClass { get; set; }
+        public OperatorClass OperatorClass { get; set; }
 
         public static Random randy = new Random();
 
-        public Operador(Bateria battery, OperatorClass operatorClass, string generalState, string operatorState, Carga carga, Movimiento movement)
+        public Operador(Bateria battery, OperatorClass OperatorClass, string GeneralState, string OperatorState, Carga Carga, Movimiento Movement)
         {
             this.ID = CreateID();
             this.Battery = battery;
-            this.operatorClass = operatorClass;
-            this.GeneralState = generalState;
-            this.OperatorState = operatorState;
-            this.Carga = carga;
-            this.Movement = movement;
+            this.OperatorClass = OperatorClass;
+            this.GeneralState = GeneralState;
+            this.OperatorState = OperatorState;
+            this.Carga = Carga;
+            this.Movement = Movement;
             //Ivan Imperiale
         }
 

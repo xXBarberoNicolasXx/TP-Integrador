@@ -52,28 +52,41 @@ namespace integrador.Operadores
             int originalBattery;
             originalBattery = operador.Battery.BatteryActual;
             bool seMovio = false;
-            bool isK9 = operador.operatorClass == OperatorClass.K9;
-            bool isM8 = operador.operatorClass == OperatorClass.M8;
-            bool isUAV = operador.operatorClass == OperatorClass.UAV;
+            bool isK9 = operador.OperatorClass == OperatorClass.K9;
+            bool isM8 = operador.OperatorClass == OperatorClass.M8;
+            bool isUAV = operador.OperatorClass == OperatorClass.UAV;
             int[] distance = DistanciaARecorrer(operador.Movement.location, destination);
 
             if (isK9 && !map.IsLago(operador.Movement.location) && operador.Movement.location != destination)
             {
                 try
                 {
-                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 ||
-                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0)
+                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 && operador.Movement.speedActual > 0 ||
+                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0 && speedActual > 0)
                     {
                         MoverOperadorHorizontal(operador, destination, map, ref seMovio);
-                        operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        if (operador.OperatorState != "BATERIA PERFORADA")
+                        {
+                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        }
+                        else
+                        {
+                            operador.Battery.BatteryActual = ReduccionBateria500(operador, distance);
+                        }
                         VerificarLocacion(operador, map, seMovio);
                         if (!seMovio)
                         {
                             MoverOperadorVertical(operador, destination, map, ref seMovio);
-                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            if (operador.OperatorState != "BATERIA PERFORADA")
+                            {
+                                operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            }
+                            else
+                            {
+                                operador.Battery.BatteryActual = ReduccionBateria500(operador, distance);
+                            }
                             VerificarLocacion(operador, map, seMovio);
                         }
-                        if (!seMovio) {operador.Movement.speedActual--;};
                     }
                 }
                 catch (Exception cantMove)
@@ -88,16 +101,30 @@ namespace integrador.Operadores
             {
                 try
                 {
-                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 ||
-                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0)
+                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 && speedActual > 0 ||
+                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0 && speedActual > 0)
                     {
                         MoverOperadorHorizontal(operador, destination, map, ref seMovio);
-                        operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        if (operador.OperatorState != "BATERIA PERFORADA")
+                        {
+                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        }
+                        else
+                        {
+                            operador.Battery.BatteryActual = ReduccionBateria500(operador, distance);
+                        }
                         VerificarLocacion(operador, map, seMovio);
                         if (!seMovio)
                         {
                             MoverOperadorVertical(operador, destination, map, ref seMovio);
-                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            if (operador.OperatorState != "BATERIA PERFORADA")
+                            {
+                                operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            }
+                            else
+                            {
+                                operador.Battery.BatteryActual = ReduccionBateria500(operador, distance);
+                            }
                             VerificarLocacion(operador, map, seMovio);
                         }
                     }
@@ -115,16 +142,30 @@ namespace integrador.Operadores
             else if (isUAV && operador.Movement.location != destination)
                 try
                 {
-                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 ||
-                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0)
+                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 && speedActual > 0||
+                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0 && speedActual > 0)
                     {
                         MoverOperadorHorizontal(operador, destination, map, ref seMovio);
-                        operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        if (operador.OperatorState != "BATERIA PERFORADA")
+                        {
+                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        }
+                        else
+                        {
+                            operador.Battery.BatteryActual = ReduccionBateria500(operador, distance);
+                        }
                         VerificarLocacion(operador, map, seMovio);
                         if (!seMovio)
                         {
                             MoverOperadorVertical(operador, destination, map, ref seMovio);
-                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            if (operador.OperatorState != "BATERIA PERFORADA")
+                            {
+                                operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            }
+                            else
+                            {
+                                operador.Battery.BatteryActual = ReduccionBateria500(operador, distance);
+                            }
                             VerificarLocacion(operador, map, seMovio);
                         }
                     }
@@ -165,6 +206,41 @@ namespace integrador.Operadores
                 if (distanciaBateria >= operador.Movement.speedMax)
                 {
                     operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.1); // Resta el 10% de la batería
+                    distanciaBateria = 0; // Reiniciar distanciaBateria
+                }
+            }
+
+            return operador.Battery.BatteryActual;
+            //Nicolas Barbero
+        }
+        public static int ReduccionBateria500(Operador operador, int[] distance)
+        {
+            int distanciaARecorrerX = distance[0];
+            int distanciaARecorrerY = distance[1];
+            int distanciaRecorrida = 0;
+            int distanciaBateria = 0;
+
+            while (distanciaRecorrida != distanciaARecorrerX)
+            {
+                if (distanciaARecorrerX > 0) { distanciaRecorrida += 1; }
+                else { distanciaRecorrida -= 1; }
+                distanciaBateria += 1;
+
+                if (distanciaBateria >= operador.Movement.speedMax)
+                {
+                    operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.5); // Resta el 50% de la batería
+                    distanciaBateria = 0; // Reiniciar distanciaBateria
+                }
+            }
+            while (distanciaRecorrida != distanciaARecorrerY)
+            {
+                if (distanciaARecorrerY > 0) { distanciaRecorrida += 1; }
+                else { distanciaRecorrida -= 1; }
+                distanciaBateria += 1;
+
+                if (distanciaBateria >= operador.Movement.speedMax)
+                {
+                    operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.5); // Resta el 50% de la batería
                     distanciaBateria = 0; // Reiniciar distanciaBateria
                 }
             }
