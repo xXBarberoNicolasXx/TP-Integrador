@@ -435,4 +435,4 @@ namespace integrador.Operadores
         Console.WriteLine("No se encontró el operador que recibe la carga.");
     }
 }
- */
+ */ 
