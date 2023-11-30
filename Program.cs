@@ -9,7 +9,6 @@ namespace integrador
     {
         private static void Main(string[] args)
         {
-            //Cosas que me faltan hacer: Pasar las cargas, con sus metodos a otra clase.
             bool exit = false;
             Map map = new Map();
             Cuartel cuartel= new Cuartel();
@@ -79,7 +78,7 @@ namespace integrador
           }
              */
         }
-       
+
         static void DisplayMap(string mapArea)
         {
             Console.WriteLine(mapArea);
@@ -94,23 +93,8 @@ namespace integrador
         }
         static void LlenarListaDeOperadores(ListaDeOperadores operatorsListInstance, List<Operador> operatorsList)
         {
-            
+
             operatorsListInstance.CrearOperadoresRandom(operatorsList);
-        }
-        static void ReciclajeEfectoTerreno(Operador operador)
-        {
-            
-            operador.Battery.RecargarBateria (operador.Battery.BatteryMax, operador.Battery.BatteryActual);
-        }
-        static string VertederoElectronicoEfectoTerreno(Operador operador)
-        {
-            Random random = new Random();
-            int probabilidad = random.Next(0, 100);
-            if (probabilidad < 20)
-            {
-                operador.OperatorState = "Bateria dañada, su capacidad maxima se reduce en 20%";
-            }
-            return operador.OperatorState;
         }
     }
     

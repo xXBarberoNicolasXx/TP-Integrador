@@ -16,8 +16,8 @@ namespace integrador.Operadores
 {
     public class Carga 
     {
-        protected int CargaMax { get; set; }
-        protected int CargaActual { get; set; }
+        public int CargaMax { get; set; }
+        public int CargaActual { get; set; }
 
         private Random randy = new Random();
 

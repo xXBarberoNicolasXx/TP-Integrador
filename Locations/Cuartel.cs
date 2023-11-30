@@ -21,20 +21,20 @@ namespace integrador.Locations
             }
             return operador.Battery.BatteryActual;
             }
-            int DepositoCarga(int cargaActual, Operador operador)
+            static int DepositoCarga(Operador operador)
             {
                 int depositoCuartel;
-                depositoCuartel = cargaActual;
-                cargaActual = 0;
-                return cargaActual;
+                depositoCuartel = operador.Carga.CargaActual;
+                operador.Carga.CargaActual = 0;
+                return operador.Carga.CargaActual;
                 //return depositoCuartel; // pongo el return por si en algun momento necesitamos saber cuanta carga hay en el deposito
                 //lo comento xq si quiere retornar eso nos va a rompe to'
             }
 
-            string Reparacion(string opState, Operador operador)
+            string Reparacion(Operador operador)
             {
-                opState = "Ok";
-                return opState;
+                operador.OperatorState = "OK";
+                return operador.OperatorState;
             }
         
     }

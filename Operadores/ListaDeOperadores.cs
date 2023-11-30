@@ -43,19 +43,19 @@ namespace integrador.Operadores
             Movimiento movementK9 = new (8, location);
             for (int j = 0; j < randy.Next(20, 50); j++)
             {
-                Operador uAV = new(bateriaUAV, "Idle", "OK", cargaUAV, movementUAV);
+                Operador uAV = new(bateriaUAV, OperatorClass.UAV, "Idle", "OK", cargaUAV, movementUAV);
                 operadores.Add(uAV);
             }
 
             for (int j = 0; j < randy.Next(20, 50); j++)
             {
-                Operador k9 = new (bateriaK9, "Idle", "OK", cargaK9, movementK9);
+                Operador k9 = new (bateriaK9, OperatorClass.K9, "Idle", "OK", cargaK9, movementK9);
                 operadores.Add(k9);
             }
 
             for (int j = 0; j < randy.Next(20, 50); j++)
             {
-                Operador m8 = new (bateriaM8, "Idle", "OK", cargaM8, movementM8);
+                Operador m8 = new (bateriaM8, OperatorClass.M8, "Idle", "OK", cargaM8, movementM8);
                 operadores.Add(m8);
             }
             //Ivan Imperiale

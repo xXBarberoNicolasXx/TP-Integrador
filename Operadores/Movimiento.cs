@@ -15,46 +15,130 @@ using integrador.Locations;
 
 namespace integrador.Operadores
 
-{    public class Movimiento
+{
+    public class Movimiento
     {
-    
-    public double speedMax { get; set; }
-    public double speedActual { get; set; }
-    public int[] location { get; set; }
-    public Movimiento(double speedMax, int[] location) 
+
+        public double speedMax { get; set; }
+        public double speedActual { get; set; }
+        public int[] location { get; set; }
+        public Movimiento(double speedMax, int[] location)
         {
             this.speedMax = speedMax;
             this.location = location;
         }
-        private static Random randy = new Random();
 
-         public double CrearVelocidadActual(Operador operador)
+        public double CrearVelocidadActual(Operador operador)
         {
             double porcentajeVelocidad = operador.Battery.GastoBateria(operador.Battery.BatteryMax, operador.Battery.BatteryActual) / 10.0 * 5.0;
             operador.Movement.speedActual -= (operador.Movement.speedActual * porcentajeVelocidad / 100.0);
             return operador.Movement.speedActual;
             //Nicolas Barbero
         }
-        /*public int[] CrearLocacionDeOperador(int[] location)
-        {
-            location[0] = randy.Next(0, 100);
-            location[1] = randy.Next(0, 100);
-            return location;
-        }*/
 
-        public static int[] DistanciaARecorrer(int[] location, int[] destination) 
+        public static int[] DistanciaARecorrer(int[] location, int[] destination)
         {
             int distanceX = location[0] - destination[0];
             int distanceY = location[1] - destination[1];
-            int[] distance = new int[] {distanceX, distanceY};
+            int[] distance = new int[] { distanceX, distanceY };
             return distance;
         }
 
 
-
-        public static int ReduccionBateria(Operador operador, int[] distance) 
+        public void MoverOperador(Operador operador, Map map, int[] destination)
         {
-            Console.WriteLine("¿Cuántos kilómetros debe recorrer la unidad?");
+            int[] originalLocation;
+            originalLocation = operador.Movement.location;
+            int originalBattery;
+            originalBattery = operador.Battery.BatteryActual;
+            bool seMovio = false;
+            bool isK9 = operador.operatorClass == OperatorClass.K9;
+            bool isM8 = operador.operatorClass == OperatorClass.M8;
+            bool isUAV = operador.operatorClass == OperatorClass.UAV;
+            int[] distance = DistanciaARecorrer(operador.Movement.location, destination);
+
+            if (isK9 && !map.IsLago(operador.Movement.location) && operador.Movement.location != destination)
+            {
+                try
+                {
+                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 ||
+                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0)
+                    {
+                        MoverOperadorHorizontal(operador, destination, map, ref seMovio);
+                        operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        VerificarLocacion(operador, map, seMovio);
+                        if (!seMovio)
+                        {
+                            MoverOperadorVertical(operador, destination, map, ref seMovio);
+                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            VerificarLocacion(operador, map, seMovio);
+                        }
+                        if (!seMovio) {operador.Movement.speedActual--;};
+                    }
+                }
+                catch (Exception cantMove)
+                {
+                    Console.WriteLine($"Error en el movimiento del operador: {cantMove.Message}\n" +
+                                      $"El operador permanecera en su locacion original.");
+                    operador.Movement.location = originalLocation;
+                    operador.Battery.BatteryActual = originalBattery;
+                }
+            }
+            else if (isM8 && !map.IsLago(operador.Movement.location) && operador.Movement.location != destination)
+            {
+                try
+                {
+                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 ||
+                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0)
+                    {
+                        MoverOperadorHorizontal(operador, destination, map, ref seMovio);
+                        operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        VerificarLocacion(operador, map, seMovio);
+                        if (!seMovio)
+                        {
+                            MoverOperadorVertical(operador, destination, map, ref seMovio);
+                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            VerificarLocacion(operador, map, seMovio);
+                        }
+                    }
+                }
+                catch (Exception cantMove)
+                {
+                    Console.WriteLine($"Error en el movimiento del operador: {cantMove.Message}\n" +
+                                      $"El operador permanecera en su locacion original.");
+                    operador.Movement.location = originalLocation;
+                    operador.Battery.BatteryActual = originalBattery;
+                }
+            }
+
+
+            else if (isUAV && operador.Movement.location != destination)
+                try
+                {
+                    while (operador.Movement.location[0] != destination[0] && operador.Battery.BatteryActual > 0 ||
+                           operador.Movement.location[1] != destination[1] && operador.Battery.BatteryActual > 0)
+                    {
+                        MoverOperadorHorizontal(operador, destination, map, ref seMovio);
+                        operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                        VerificarLocacion(operador, map, seMovio);
+                        if (!seMovio)
+                        {
+                            MoverOperadorVertical(operador, destination, map, ref seMovio);
+                            operador.Battery.BatteryActual = ReduccionBateria(operador, distance);
+                            VerificarLocacion(operador, map, seMovio);
+                        }
+                    }
+                }
+                catch (Exception cantMove)
+                {
+                    Console.WriteLine($"Error en el movimiento del operador: {cantMove.Message}\n" +
+                                      $"El operador permanecera en su locacion original.");
+                    operador.Movement.location = originalLocation;
+                    operador.Battery.BatteryActual = originalBattery;
+                }
+        }
+        public static int ReduccionBateria(Operador operador, int[] distance)
+        {
             int distanciaARecorrerX = distance[0];
             int distanciaARecorrerY = distance[1];
             int distanciaRecorrida = 0;
@@ -127,27 +211,90 @@ namespace integrador.Operadores
                       //Ivan Imperiale
             }
         }
-        
-        
-        public void MoveLeft(int[] location, int[] destination)
+
+        private void MoverOperadorVertical(Operador operador, int[] destination, Map map, ref bool seMovio)
         {
-            do location[1]--;
-            while (location[1] < destination[1]);
+            int[] originalLocation;
+            originalLocation = operador.Movement.location;
+            if (operador.Movement.location[0] < destination[0])
+            {
+                int[] nextLocation = new int[] { operador.Movement.location[0] + 1, operador.Movement.location[1] };
+
+                if (!map.IsLago(nextLocation))
+                {
+                    operador.Movement.location[0]++;
+                }
+            }
+            else if (operador.Movement.location[0] > destination[0])
+            {
+                int[] nextLocation = new int[] { operador.Movement.location[0] - 1, operador.Movement.location[1] };
+
+                if (!map.IsLago(nextLocation))
+                {
+                    operador.Movement.location[0]--;
+                }
+            }
+            if (operador.Movement.location != originalLocation)
+            {
+                seMovio = true;
+            }
         }
-        public void MoveRight(int[] location, int[] destination)
+        private void MoverOperadorHorizontal(Operador operador, int[] destination, Map map, ref bool seMovio)
         {
-            do location[1]++;
-            while (location[1] > destination[1]);
+            int[] originalLocation;
+            originalLocation = operador.Movement.location;
+
+                if (operador.Movement.location[1] < destination[1])
+            {
+                // Mover hacia la derecha
+                int[] nextLocation = new int[] { operador.Movement.location[0], operador.Movement.location[1] + 1 };
+
+                if (!map.IsLago(nextLocation))
+                {
+                    operador.Movement.location[1]++;
+                }
+            }
+            else if (operador.Movement.location[1] > destination[1])
+            {
+                // Mover hacia la izquierda
+                int[] nextLocation = new int[] { operador.Movement.location[0], operador.Movement.location[1] - 1 };
+
+                if (!map.IsLago(nextLocation))
+                {
+                    operador.Movement.location[1]--;
+                }
+            }
+            if (operador.Movement.location != originalLocation)
+            {
+                seMovio = true;
+            }
         }
-        public void MoveUp(int[] location, int[] destination)
+        public void VerificarLocacion(Operador operador, Map map, bool seMovio)
         {
-            do location[0]++;
-            while (location[0] < destination[0]);
+            VerificarVertedero(operador, map, seMovio);
+            VerificarReciclaje(operador, map, seMovio);
+            VerificarVertederoElectronico(operador, map, seMovio);
         }
-        public void MoveDown(int[] location, int[] destination)
+        private void VerificarVertedero(Operador operador, Map map, bool seMovio)
         {
-            do location[0]--;
-            while (location[0] < destination[0]);
+            if (seMovio && map.IsVertedero(operador.Movement.location))
+            {
+                operador.OperatorState = map.VertederoEfectoTerreno(operador);
+            }
+        }
+        private void VerificarVertederoElectronico(Operador operador, Map map, bool seMovio)
+        {
+            if (seMovio && map.IsVertedero(operador.Movement.location))
+            {
+                operador.OperatorState = map.VertederoElectronicoEfectoTerreno(operador);
+            }
+        }
+        private void VerificarReciclaje(Operador operador, Map map, bool seMovio)
+        {
+            if (seMovio && map.IsVertedero(operador.Movement.location))
+            {
+                operador.OperatorState = map.VertederoEfectoTerreno(operador);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using integrador.Locations;
+using integrador.Operadores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace integrador.Locations
     {
         private int mapX = 100;
         private int mapY = 100;
-        private int cuartelMax = 2;
         private int reciclajeMax = 4;
         private Random randy = new Random();
         public Locations[,] mapLocations;
@@ -37,18 +37,16 @@ namespace integrador.Locations
                     mapLocations[i, j] = (Locations)randy.Next(2, last);
                 }
             }
-            for (int k = 0; k < cuartelMax; k++)
-            {
-                x = randy.Next(0, mapX);
-                y = randy.Next(0, mapY);
-                mapLocations[x, y] = Locations.Cuartel;
-            }
+
             for (int k = 0; k < reciclajeMax; k++)
             {
                 x = randy.Next(0, mapX);
                 y = randy.Next(0, mapY);
                 mapLocations[x, y] = Locations.Reciclaje;
             }
+            x = randy.Next(0, mapX);
+            y = randy.Next(0, mapY);
+            mapLocations[x, y] = Locations.Cuartel;
         }
         static int GetLastEnumValue()
         {
@@ -69,9 +67,154 @@ namespace integrador.Locations
                     }
                 }
             }
-
-            // If Cuartel is not found, you might want to handle this case accordingly
             return null;
+        }
+        public static List<int[]>? GetLagoCoordinates(Locations[,] mapLocations)
+        {
+            List<int[]> coordinatesList = new List<int[]>();
+
+            int mapX = mapLocations.GetLength(0);
+            int mapY = mapLocations.GetLength(1);
+
+            for (int i = 0; i < mapX; i++)
+            {
+                for (int j = 0; j < mapY; j++)
+                {
+                    if (mapLocations[i, j] == Locations.Lago)
+                    {
+                        int[] coordinates = { i, j };
+                        coordinatesList.Add(coordinates);
+                    }
+                }
+            }
+
+            return coordinatesList.Count > 0 ? coordinatesList : null;
+        }
+        public static List<int[]>? GetVertederoCoordinates(Locations[,] mapLocations)
+        {
+            List<int[]> coordinatesList = new List<int[]>();
+
+            int mapX = mapLocations.GetLength(0);
+            int mapY = mapLocations.GetLength(1);
+
+            for (int i = 0; i < mapX; i++)
+            {
+                for (int j = 0; j < mapY; j++)
+                {
+                    if (mapLocations[i, j] == Locations.Vertedero)
+                    {
+                        int[] coordinates = { i, j };
+                        coordinatesList.Add(coordinates);
+                    }
+                }
+            }
+
+            return coordinatesList.Count > 0 ? coordinatesList : null;
+        }
+        public static List<int[]>? GetVertederoElectronicoCoordinates(Locations[,] mapLocations)
+        {
+            List<int[]> coordinatesList = new List<int[]>();
+
+            int mapX = mapLocations.GetLength(0);
+            int mapY = mapLocations.GetLength(1);
+
+            for (int i = 0; i < mapX; i++)
+            {
+                for (int j = 0; j < mapY; j++)
+                {
+                    if (mapLocations[i, j] == Locations.VertederoElectronico)
+                    {
+                        int[] coordinates = { i, j };
+                        coordinatesList.Add(coordinates);
+                    }
+                }
+            }
+
+            return coordinatesList.Count > 0 ? coordinatesList : null;
+        }
+        public static List<int[]>? GetReciclajeCoordinates(Locations[,] mapLocations)
+        {
+            List<int[]> coordinatesList = new List<int[]>();
+
+            int mapX = mapLocations.GetLength(0);
+            int mapY = mapLocations.GetLength(1);
+
+            for (int i = 0; i < mapX; i++)
+            {
+                for (int j = 0; j < mapY; j++)
+                {
+                    if (mapLocations[i, j] == Locations.Reciclaje)
+                    {
+                        int[] coordinates = { i, j };
+                        coordinatesList.Add(coordinates);
+                    }
+                }
+            }
+
+            return coordinatesList.Count > 0 ? coordinatesList : null;
+        }
+
+
+        public bool IsLago(int[] location)
+        {
+            List<int[]>? lagoCoordinates = Map.GetLagoCoordinates(mapLocations);
+
+            foreach (var lago in lagoCoordinates)
+            {
+                int x = lago[0];
+                int y = lago[1];
+
+                if (mapLocations[x, y] == Locations.Lago)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool IsVertedero(int[] location)
+        {
+            List<int[]>? vertederoCoordinates = Map.GetVertederoCoordinates(mapLocations);
+
+            foreach (var vertedero in vertederoCoordinates)
+            {
+                int x = vertedero[0];
+                int y = vertedero[1];
+                if (mapLocations[x, y] == Locations.Vertedero)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool IsVertederoElectronico(int[] location)
+        {
+            List<int[]>? vertederoElectronicoCoordinates = Map.GetVertederoElectronicoCoordinates(mapLocations);
+
+            foreach (var vertederoElectronico in vertederoElectronicoCoordinates)
+            {
+                int x = vertederoElectronico[0];
+                int y = vertederoElectronico[1];
+                if (mapLocations[x, y] == Locations.Vertedero)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool IsReciclaje(int[] location)
+        {
+            List<int[]>? reciclajeCoordinates = Map.GetReciclajeCoordinates(mapLocations);
+
+            foreach (var reciclaje in reciclajeCoordinates)
+            {
+                int x = reciclaje[0];
+                int y = reciclaje[1];
+                if (mapLocations[x, y] == Locations.Vertedero)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public string PrintMap()
@@ -130,6 +273,58 @@ namespace integrador.Locations
             return output;
         }
 
+        public string VertederoEfectoTerreno(Operador operador)
+        {
+            Random randy = new Random();
+            int probabilidad = randy.Next(0, 100);
+            int falla;
+            if (probabilidad < 5)
+            {
+                falla = probabilidad;
+
+
+                switch (falla)
+                {
+                    case 1:
+                        operador.OperatorState = "MOTOR COMPROMETIDO";
+                        return operador.OperatorState;
+                    case 2:
+                        operador.OperatorState = "SERVO ATASCADO";
+                        return operador.OperatorState;
+                    case 3:
+                        operador.OperatorState = "BATERIA PERFORADA";
+                        return operador.OperatorState;
+                    case 4:
+                        operador.OperatorState = "PUERTO BATERIA DESCONECTADO";
+                        return operador.OperatorState;
+                    case 5:
+                        operador.OperatorState = "PINTURA RAYADA";
+                        return operador.OperatorState;
+
+                    default:
+                        operador.OperatorState = "OK";
+                        return operador.OperatorState;
+                }
+
+            }
+            return operador.OperatorState;
+
+        }
+
+        public void ReciclajeEfectoTerreno(Operador operador)
+        {
+            operador.Battery.RecargarBateria(operador.Battery.BatteryMax, operador.Battery.BatteryActual);
+        }
+        public string VertederoElectronicoEfectoTerreno(Operador operador)
+        {
+            Random randy = new Random();
+            int probabilidad = randy.Next(0, 100);
+            if (probabilidad < 15)
+            {
+                operador.OperatorState = "BATERIA DAÑADA";
+            }
+            return operador.OperatorState;
+        }
 
 
 

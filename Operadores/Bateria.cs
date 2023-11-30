@@ -53,6 +53,42 @@ namespace integrador.Operadores
             return batteryMax;
             //Nicolas Barbero
         }
+
+        public static int ReduccionBateria(Operador operador, int[] distance)
+        {
+            int distanciaARecorrerX = distance[0];
+            int distanciaARecorrerY = distance[1];
+            int distanciaRecorrida = 0;
+            int distanciaBateria = 0;
+
+            while (distanciaRecorrida != distanciaARecorrerX)
+            {
+                if (distanciaARecorrerX > 0) { distanciaRecorrida += 1; }
+                else { distanciaRecorrida -= 1; }
+                distanciaBateria += 1;
+
+                if (distanciaBateria >= operador.Movement.speedMax)
+                {
+                    operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.1); // Resta el 10% de la batería
+                    distanciaBateria = 0; // Reiniciar distanciaBateria
+                }
+            }
+            while (distanciaRecorrida != distanciaARecorrerY)
+            {
+                if (distanciaARecorrerY > 0) { distanciaRecorrida += 1; }
+                else { distanciaRecorrida -= 1; }
+                distanciaBateria += 1;
+
+                if (distanciaBateria >= operador.Movement.speedMax)
+                {
+                    operador.Battery.BatteryActual -= (int)(operador.Battery.BatteryActual * 0.1); // Resta el 10% de la batería
+                    distanciaBateria = 0; // Reiniciar distanciaBateria
+                }
+            }
+
+            return operador.Battery.BatteryActual;
+            //Nicolas Barbero
+        }
         /*int TransferirBateria(Operador operador, int batteryMax, int batteryActual)
         {
             Console.WriteLine("A cual operador desea cargar la bateria:"); 
