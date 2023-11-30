@@ -1,7 +1,7 @@
 ﻿using integrador.Locations;
 using integrador.Operadores;
 using System;
-
+using System.Text.Json;
 
 namespace integrador
 {
@@ -16,13 +16,14 @@ namespace integrador
             Console.WriteLine("Bienvenidos al sistema de gestion de operadores de " + empresa + "\n");
             string showMap = CreateMap(map);
             DisplayMap(showMap);
-            string mapJson = JsonSerealize(showMap);
+            //string mapJson = JsonSerialize(showMap);
             ListaDeOperadores operatorsListInstance = new ListaDeOperadores();
             List<Operador> operatorsList = new List<Operador>();
             LlenarListaDeOperadores(operatorsListInstance, operatorsList);
-            string operadoresJson = JsonSerealize(operatorsListInstance, operatorsList);
-
-            foreach (Operador Oper in operatorsList)
+            /*string operadoresJson = JsonSerealize(operatorsListInstance, operatorsList);
+            File.WriteAllText("operatorsave.txt", operadoresJson); // Json para guardado de Lista De Operadores*/
+            
+                foreach (Operador Oper in operatorsList)
             {
                 Console.WriteLine(Oper.ID);
             }
@@ -34,52 +35,81 @@ namespace integrador
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //Ivan Imperiale
-            /*ListaDeOperadores operadores = new ListaDeOperadores();
-            List<Operador> operadoresList = new List<Operador>();
-            string jsonData = JsonConvert.SerializeObject(operadoresList);
-            string filePath = @"Save\operadoresList.json";
-            string folderPath = @"C:\Users\Documents\UTN\TP-Integrador";
-            if (!Directory.Exists(folderPath))
+            /*static void PartidaGuardada(string operadoresJson, string mapJson) // funcion de cargdo de archivos
             {
-                Directory.CreateDirectory(folderPath);
-            }
+                if (File.Exists(mapJson, operadoresJson))
+                {
+                    Console.WriteLine("Se encontró un archivo guardado. ¿Desea cargarlo? (S/N)");
+                    string respuesta = Console.ReadLine();
+                    respuesta = respuesta.ToUpper();
 
-            File.WriteAllText(filePath, jsonData);
-            operadores.CrearOperadoresRandom(operadoresList);
-            Console.WriteLine(operadoresList.Count);
-            //Nicolas Barbero*/
+                    switch (respuesta)
+                    {
+                        case "S":
+                            string contenido = File.ReadAllText(mapJson, operadoresJson);
+                            Map map = JsonSerializer.Deserialize<map>(mapJson);
+                            Console.WriteLine("Objeto cargado: " + JsonSerializer.Serialize(map));
+                            List<Operador> operatorsList = JsonSerializer.Deserialize<operatorsList>(operadoresJson);
+                            Console.WriteLine("Objeto cargado: " + JsonSerializer.Serialize(operadoresJson));
+                            break;
+                        case "N":
+                            Map map = new Map();
+                            ListaDeOperadores operatorsListInstance = new ListaDeOperadores();
+                            break;
 
-            // No le gusta nada al compiu como lo guardaste ameo, dice que so re piola pero no entiende gallego
+                        default:
+                            Console.WriteLine("Opcion no valida. ¿Desea cargar el archivo encontrado? (S/N)");
+                            string respuesta = Console.ReadLine();
+                            respuesta = respuesta.ToUpper();
+                            break;
+                    }
+    else { break;* }*/
+                }
 
 
-            /*  while (exit)
-              {
-                  MenuCuartel();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                //Ivan Imperiale
+                /*ListaDeOperadores operadores = new ListaDeOperadores();
+                List<Operador> operadoresList = new List<Operador>();
+                string jsonData = JsonConvert.SerializeObject(operadoresList);
+                string filePath = @"Save\operadoresList.json";
+                string folderPath = @"C:\Users\Documents\UTN\TP-Integrador";
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                File.WriteAllText(filePath, jsonData);
+                operadores.CrearOperadoresRandom(operadoresList);
+                Console.WriteLine(operadoresList.Count);
+                //Nicolas Barbero*/
+
+                // No le gusta nada al compiu como lo guardaste ameo, dice que so re piola pero no entiende gallego
+
+
+                /*  while (exit)
+                  {
+                      MenuCuartel();
+                  }
               }
-          }
-             */
-        }
+                 */
+            
 
         static void DisplayMap(string mapArea)
         {
